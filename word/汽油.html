@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		/*小例子：
+		一个加油站为了鼓励车主多加油，所以加的多有优惠。
+		92号汽油，每升6元；如果大于等于20升，那么每升5.9；
+		95号汽油，每升7元；如果大于等于30升，那么每升6.95;
+		编写JS程序，用户输入自己的汽油编号，然后输入自己加多少升，弹出价格。*/
+
+		var type = prompt('请输入油品类型,92或95');
+		var val = prompt('请输入升数,单位L');
+		var rs = 0; //结果
+		if(type == '92'){
+			if(val<20){
+				// 如果var rs 是重新定义rs; 如果是 rs = xx ,那么是赋值操作.
+				rs = (6)
+			}else{
+				rs = (5.9)
+			}	
+		}else if(type == '95'){
+			if(val < 30){
+				rs = (7)
+			}else{
+				rs = (6.59)
+			}
+		}else{
+			alert('没有'+type+'号油!');
+		}
+		// 思考: 要求加上 具体的价格?
+		// 您输入的油品为:92; 加的升数为: 30; 单价为:X元 ; 总价为: 177
+		alert('您输入的油品为:'+type+'; 加的升数为: '+val+'; 总价为: '+(val*rs));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

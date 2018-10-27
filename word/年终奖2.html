@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// 某个公司要给员工发年终奖，为了奖励老员工，所以工作时间越长，发的越多，规则如下：
+		// 工作满0年		            发月薪的1倍月薪`年终奖，如果月薪大于8000，那么就是发1.2倍
+		// 工作满1年		            发月薪的1.5倍月薪年终奖，如果月薪大于10000，那么就是发1.7倍
+		// 工作满2年，甚至更多		发月薪的3倍月薪年终奖，如果月薪大于12000，那么就是发3.2倍
+
+		// 用JS编写程序，让用户输入工作了几年，可以输入0，然后输入月薪。然后算年终奖。
+
+
+		// 1. 获取工作年份
+		// 2. 获取工资
+		// 3. 计算
+		var year = prompt('请输入您工作的年份,不够一年请输入0:',0);
+		var salary = prompt('请输入您的月薪:');
+		var times = 1
+		if (year<1) {
+			if (salary>8000) {
+				times = 1.2;
+			}
+		}else if (year<2) {
+			if (salary>10000) {
+				times = 1.7;
+			}else{
+				times = 1.5;
+			}
+		}else{
+			if (salary>12000) {
+				times = 3.2;
+			}else{
+				times = 3;
+			}
+		}
+		
+
+		var rs = '您的月薪为:'+salary+'元,你工作了'+year+'年,您的年终奖为'+times+'倍薪资,共'+salary*(1+times)+'元';
+		alert(rs)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

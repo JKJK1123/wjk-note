@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var qy=prompt('你要加什么油92或95')
+		var ys=prompt('请问你要加多少油')
+		if (qy) {
+			if (qy==92) {
+				if (ys<20) {
+					alert(6*ys);
+				}else{
+					alert(5.9*ys);
+				}
+			}
+			if (qy==95) {
+				if(ys<30){
+					alert(7*ys);
+				}else{
+					alert(5.95*ys);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
