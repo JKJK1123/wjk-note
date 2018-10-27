@@ -48,3 +48,15 @@
 	getseconds() 	返回秒数
 	getday() 		返回到一周中的某一天(返回值是0(周日)
 					到6(周六) 之间的一整个小时)
+	var date =new Date ();
+	var year = date.getFullYear();
+	var month = date.getMonth()+1
+	var day = date.getDate();
+	var hour = date.getHours();
+	var min = date.getMinutes();
+	var sec = date.getSeconds();
+	var mm = date.getMilliseconds();
+	
+	var nowTime = year + '年' + month + '月' + day + '日'+	 			hour + ':' + min + ':'+sec + ':'+ mm ;
+
+	var  = date.getTime() 时间戳

@@ -13,23 +13,22 @@
 		// 用JS编写程序，让用户输入工作了几年，可以输入0，然后输入月薪。然后算年终奖。
 		var gl = prompt('请输入您的工作年龄,0~2');
 		var yx = prompt('请输入您的月薪,单位元');
-		if (gl==0) {
-			if (yx<8000) {
-				alert(yx);
-			}else{
-				alert(1.2*yx);
+		var ite = 1
+		if(gl<1){
+			if (yx>8000) {
+				ite=1.2;
 			}
-		}else if (gl==1) {
-			if(yx<10000){
-				alert(1.5*yx);
+		}else if (gl<2){
+			if (yx>10000) {
+				ite=1.7;
 			}else{
-				alert(1.7*yx);
+				ite=1.5;
 			}
-		}else if (gl==2) {
-			if (yx<12000) {
-				alert(3*yx);
+		}else{
+			if (yx>12000) {
+				ite=3.2;
 			}else{
-				alert(3.2*yx);
+				ite=3;
 			}
 		}
 	</script>

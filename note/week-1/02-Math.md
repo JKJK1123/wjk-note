@@ -34,9 +34,9 @@
 	</body>
 	</html>
 ###总结
-	math.ceil 天花板结果
-	math.floor 地板函数
-	math.max 取最大值
+	math.ceil 天花板结果	 	var num2 = Math.ceil(num1);
+	math.floor 地板函数		var num3 = Math.floor(num1);
+	math.max 取最大值	console.log('Math.max==>'+ Math.max(num3,num4))
 
 	math.random [0,1] 	获取0~1的随机值
 						获取1~100的随机值
