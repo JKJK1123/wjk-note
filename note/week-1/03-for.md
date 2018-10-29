@@ -76,24 +76,35 @@
 		for(var a in arr){
 			console.log('下标为'+a+'的值为'+arr[a]);
 		}
-```3合并数组(concat)
+###总结
+```1.合并数组(concat)不会影响原来数组
 		var arr1 = [1,3,5];
 		var arr2 = [2,4,6];
-						 concat(合并)不会影响原来数组
 		console.log(arr1.concat(arr2));		[1,3,5,2,4,6
 
-```2把数组转换为字符串(join)
+```2.把数组转换为字符串(join)
 	var str = arr3.join('^_^');
-	console.log(str);
+
 ```3.把字符串打断为数组(split)
 
 ```4.push  从后面插入一个值 ,并返回新的长度
-	arr1.push();
+		arr1.push();
 
 ```5.unshift  从前面插入,并返回新的长度
-	var rs = arr1.unshift();
+		var rs = arr1.unshift();
+
+
 ```6.pop    删除最后一个元素 并且返回被删除的值
-	var rs1 = arr2.pop();
+		var rs1 = arr2.pop();
 		
 ```7.shift   删除第一个元素 并且返回第一个删除的值
-	var rs2 = arr2.shift();
+		var rs2 = arr2.shift();
+
+
+```8.break (实现目标跳出循环)
+
+
+```9.continue(继续往下)
+
+
+```10. .in/.length(两种遍历数组的方式)
