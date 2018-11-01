@@ -4,11 +4,11 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<script>
-		var d,b,c;
+		var b,c,d;
 		for(var i =100; i <= 999; i++){
-			var b = Math.floor(i/100);
-    		var c = Math.floor(i%100/10);
-   		 	var d = Math.floor(i%10);
+			 b = Math.floor(i/100);
+    		 c = Math.floor(i%100/10);
+   		 	 d = i%10;
    		 	if (i==b*b*b+c*c*c+d*d*d) {
 				console.log(i);
    		 	}

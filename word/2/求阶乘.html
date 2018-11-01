@@ -4,10 +4,14 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<script>
-		for(var i = 0; i <= 60 ; i++){
-			if (i%7 != 0 && i%10 != 7) {
-				console.log(i);
+		var n = prompt('请输入n的值');
+		alert(jc(n));
+		function jc(n){
+			var tao = 1;
+			for(var i = 1 ; i <= n ;i++){
+				tao *= i
 			}
+			return tao
 		}
 	</script>
 </head>

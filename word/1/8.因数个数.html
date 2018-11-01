@@ -4,12 +4,15 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<script>
-		var num = prompt('请输入');
+		var num = parseInt(prompt('请输入'));
+		var count = 0;
 		for(var i = 1; i<=num ; i++){
 			if (num%i == 0) {
+				count ++ ;
 				console.log(i);
 			}
 		}
+		console.log('一共'+count+'个因数')
 	</script>
 </head>
 <body>

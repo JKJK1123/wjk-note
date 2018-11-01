@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var num = prompt('请输入');
+		for(var i=1; i<=num ; i++){
+			if (num/i == num && num/i == 1) {
+				alert('这个数字是质数')
+			}else{
+				alert('这个数字不是质数')
+				break;
+			}
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var iszhi = true;
+		var num = parseInt(prompt('请用户输入数据'));
+		for(var i = 2 ; i < num ; i++){
+			if(num % i == 0 ){
+				iszhi = false;
+				break;
+			}
+		}
+		alert('你输入的数字是'+num+','+(iszhi?'是质数':'不是质数'));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

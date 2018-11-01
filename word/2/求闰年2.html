@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var monthArr = [31,28,31,30,31,30,31,31,30,31,30,31];
+		var datestr = prompt('请输入年份,格式:yyyy-mm-dd');
+		alert(datestr+'为当年的第'+getMyDay(datestr)+'天');
+		function getMyDay(datestr){
+			var date = new Date(datestr);
+			var year = date.getFullYear();
+			var month = date.getMonth()+1;
+			var day = date.getDate();
+			var totalDay = 0;
+			for(var i = 1; i < month ; i++){
+				totalDay += monthArr[i-1];
+				
+			}
+			totalDay += day;
+			if(month>2){
+				if(isrun(date)){
+					return totalDay += 1;
+				}
+			}
+			return totalDay
+		}
+
+
+		function isrun(datestr){
+			var year = datestr.getFullYear();
+			return (year%4 == 0 && year%100 != 0) || year%400 ==0;
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

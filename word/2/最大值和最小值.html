@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+    var arr = [3,12,23,18,25,33,22,30,1];
+   function max(arr){
+    var maxIndex = 0;
+    for(var i = 1; i < arr.length ; i++){
+      if(arr[maxIndex]<arr[i]){
+        maxIndex = i ;
+      }
+    }
+     console.log(arr[maxIndex])
+   }
+   max(arr);
+
+   function min(arr){
+    var minIndex = 0;
+    for(var i = 1 ; i < arr.length ; i++){
+      if(arr[minIndex]>arr[i]){
+        minIndex = i;
+      }
+    }
+    console.log(arr[minIndex])
+   }
+   min(arr);
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var n = prompt('请输入n的值');
+		alert(he(n));
+		function he(n){
+			var sr = 0;
+			for(var i = 1; i <= n ; i++){
+				sr += jc(i)
+			}
+			return sr
+		}
+
+
+		function jc(n){
+			if (n == 1) {
+				return 1
+			}
+			return n*jc(n-1)
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

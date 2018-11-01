@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// 输入某年某月某日,判断这一天是这一年第几天
+		var monthArr = [31,28,31,30,31,30,31,31,30,31,30,31];
+		var datestr = prompt('请输入年份,格式:yyyy-mm-dd');
+		alert(datestr+'为当年的第'+getMyDay(datestr)+'天');
+		function getMyDay (datestr){
+			var date = new Date(datestr);
+			console.log(date);
+			// 获取年份
+			var year = date.getFullYear();
+			// 获取月 0~11
+			var month = date.getMonth()+1;
+			// 某个月的第几天
+			var day = date.getDate();
+			var totalDay = 0;
+			for(var i = 1 ; i < month ; i++){
+				// 把月份当下标 获取当月天数 
+				totalDay += monthArr[i-1];
+			}
+			// 再加上当月天数
+			totalDay += day;
+
+			// 月份大于2的时候有必要判断闰年
+			if(month>2){
+				if(isRun(date)){
+					totalDay += 1;
+				}
+			}
+			return totalDay
+		}
+
+
+		function isRun (date){
+			var year = date.getFullYear();
+			// if ((year%4==0 && year%100) || year%400==0){
+			// 	return true;
+			// }else{
+			// 	return false;
+			// }
+
+			return(year%4==0 && year%100!=0) ||year%400==0;
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
