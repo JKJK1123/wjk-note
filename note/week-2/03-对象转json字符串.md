@@ -1,4 +1,4 @@
-###json格式
+### json格式
 	var movie = {
 			"title":"我不是药神",
 			"casts": [
@@ -24,7 +24,7 @@
 			console.log(user.name);
 
 
-###json遍历
+### json遍历
 	**对象**
 	var user = {
 		name:'张三',

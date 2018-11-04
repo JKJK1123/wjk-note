@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// 4.工资的数组[1500,1200,2000,2100,1800],把工资超过2000的删除
+		var arr = [1500,1200,2000,2100,1800];
+		function chao(arr2,b){
+			var arr3 = [];
+			for(var i = 0 ; i < arr2.length ; i++){
+				if (arr2[i]<b) {
+					arr3.push(arr2[i]);
+				}
+			}
+			arr.length = 0;
+			arr = arr3;
+		}
+		chao(arr,2000);
+		alert(arr);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
