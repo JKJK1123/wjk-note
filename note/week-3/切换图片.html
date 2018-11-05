@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		img{
+			width: 400px;
+		}
+	</style>
+</head>
+<body>
+	<img src="img/fbb.jpg" alt="" class="img">
+	<script>
+		var imgs = ['a.jpg','fbb.jpg','hulk.jpg','sjl.jpg','钢铁侠.jpg'];
+		// 点击照片 动态改变照片
+		var imgEl = document.getElementsByClassName('img')[0];
+		imgEl.onclick = function(){
+			var randomIndex = Math.floor(Math.random()*imgs.length);
+			this.src = 'img/'+ imgs[randomIndex];
+		}
+	</script>
+</body>
+</html>

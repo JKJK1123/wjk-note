@@ -1484,47 +1484,27 @@
 				}],
 				"title": "豆瓣电影Top250"
 					}
-		// for(a in movie){
-		// 	console.log(movie[a]);
-		// }
-			// db是一大坨,原信息,观察发现db是一个对象
-			var dy=db["subjects"];//所有的电影信息,都在"subjects"下面,这里用dy取到所有电影,dy是一个数组
-			var s='';//一个空字符串
-			var dyname=[];//一个空数组,导演名字
-			var film=[];//一个空数组,电影名字
-			for(var i=0;i<dy.length;i++){//dy是一个数组,其中的每个元素,就是每部电影.遍历出每部电影
-				var mei=dy[i];//mei就是每部电影,这是个对象
-				var dys=mei["directors"];//每部电影下的所有导演,dys是数组
-				film.push(mei["title"]);//每次遍历出一部电影,取出电影名字,放进空数组-------------------取电影名
-				// console.log(film);
-				// 分情况考虑:只有一个导演或者一部电影有多个导演,把多个导演名字写在一个数组里面
-				if(dys.length==1){//只有一个导演
-					var dd=dys[0];//dd,每个人的信息又装在一个对象里面
-					var ee=dd["name"];//ee就是人名,装进空数组里面
-					dyname.push(ee);
-				}else {
-					var b=[];//多位导演的时候,把每部电影的人名装进一个空数组
-					for(var j=0;j<dys.length;j++){
-						var dd=dys[j];//个人信息,对象
-						var xx=dd["name"];//名字
-						b.push(xx);//把名字装进数组
-					}
-						dyname.push(b);//把数组装进总的dyname数组
-				}
-			};
-			// 现在已经得到了两个数组了,一个人名数组dyname,一个电影名数组film
-			// 下面把这两个数组,拼成一个json类型的对象,看起来更好看
-			var qq='';//qq是一个空的字符串
-			for(var z=0;z<film.length;z++){//dyname和film,下标一一对应,长度相同,所以下标z两个都可以用
-				var mm='';//一个空字符串
-				mm+='"'+film[z]+'"'+':'+'"'+'['+dyname[z]+']'+'",';//加双引号,冒号,做好准备转换
-				qq+=mm;//累加进去
+		console.log(db);
+		//1.获取列表集合
+		var subjects = db.subjects;
+		// 2. 遍历获取每一项
+		for(var i = 0 ; i < subjects.length ; i ++){
+			var item = subjects[i];
+			//获取电影名称
+			var fileName = item.title;
+			// 3. 获取导演集合
+			var directors = item.directors;
+			// 导演名称 字符串
+			var dirNameStr = '';
+			for(var j = 0 ; j < directors.length ; j ++){
+				//4.获取每一个导演对象
+				var dir = directors[j];
+				dirNameStr += dir.name+'/';
 			}
-			qq=qq.substr(0,qq.length-1);//去掉最后一个冒号
-			qq="{"+qq+"}";//加花括号
-			var pps=JSON.parse(qq);//转换成json类型的对象
-			console.log(pps);//打印出来,终于成功了
-
+			//去掉最后一个/
+			dirNameStr = dirNameStr.substr(0,dirNameStr.length-1);
+			console.log('<<'+fileName+'>>  :   '+dirNameStr);
+		}
 	</script>
 </head>
 <body>

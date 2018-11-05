@@ -15,15 +15,12 @@
 	1. 要实现把json类型的对象转换为文本,使用JSON.stringify()的方法
 			var jsonstr = JSON.stringify(movie);
 
-	2. 要实现从对象转换为JSON字符串,使用JSON.stringify()方法;
-			var json = JSONstringify({name:'zhangsan',age:20});
-
-	3. 要实现从JSON字符串转换为对象,使用JSON.parse() 方法:
+	2. 要实现从字符串转换为对象,使用JSON.parse() 方法:
 			var user = JSON.parse('{"name":"张三","age":20}')
-		**转换为对象 即可通过 . 的形式调用属性的值**
+	** 转换为对象 即可通过 . 的形式调用属性的值 **
 			console.log(user.name);
 
-
+	3. 
 ### json遍历
 	**对象**
 	var user = {

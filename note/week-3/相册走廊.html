@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.bgc-img{
+			width: 400px;
+			height: 300px;
+		}
+		ul{
+			list-style: none;
+			height: 300px;
+			background-color: pink;
+			overflow: hidden;
+		}
+		ul li{
+			float: left;
+			margin-left: 10px;
+			width: 150px;
+			height: 100%;
+		}
+		ul li img{
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<img src="img/fbb.jpg" alt="" class="bgc-img">
+	<ul>
+		<li class="img-item"><img src="img/钢铁侠.jpg" alt=""></li>
+		<li class="img-item"><img src="img/a.jpg" alt=""></li>
+		<li class="img-item"><img src="img/hulk.jpg" alt=""></li>
+		<li class="img-item"><img src="img/m1.jpg" alt=""></li>
+		<li class="img-item"><img src="img/m2.jpg" alt=""></li>
+		<li class="img-item"><img src="img/m3.jpg" alt=""></li>
+		<li class="img-item"><img src="img/m4.jpg" alt=""></li>
+		<li class="img-item"><img src="img/m5.jpg" alt=""></li>
+		<li class="img-item"><img src="img/sjl.jpg" alt=""></li>
+	</ul>
+	<script>
+		var lis = document.getElementsByClassName('img-item');
+		var target = document.getElementsByClassName('bgc-img')[0];
+		for(var i = 0 ; i < lis.length ; i++){
+			lis[i].onclick = function(){
+				var child = this.children[0];
+				var imgUrl = child.src;
+				target.src = imgUrl;
+			}
+		}
+	</script>
+</body>
+</html>

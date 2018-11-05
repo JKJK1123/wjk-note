@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" class="input">
+	<button class="btn1">input添加value</button>
+	<p class="p1"></p>
+	<button class="btn2">给p标签添加text</button>
+	<button class="btn3">给p标签添加text</button>
+	<div class="box"></div>
+	<button class="btn4">给box插入html</button>
+
+	<div class="box2">
+		
+	</div>
+	<button class="btn5">动态拼接</button>
+	<script>
+		var inputEl = document.getElementsByClassName('input')[0];
+		var pEl1 = document.getElementsByClassName('p1')[0];
+		var box = document.getElementsByClassName('box')[0];
+		var box2 = document.getElementsByClassName('box2')[0];
+		var btn1 = document.getElementsByClassName('btn1')[0];
+		var btn2 = document.getElementsByClassName('btn2')[0];
+		var btn3 = document.getElementsByClassName('btn3')[0];
+		var btn4 = document.getElementsByClassName('btn4')[0];
+		var btn5 = document.getElementsByClassName('btn5')[0];
+
+		btn1.onclick = function(){
+			// input表单的值 必须通过 value属性添加
+			inputEl.value = Math.floor(Math.random()*20);
+		}
+		btn2.onclick = function(){
+			var txt = '今天天气不错';
+			pEl1.textContent = txt;
+		}
+		btn3.onclick = function(){
+			var txt = 'hahah';
+			pEl1.innerText = txt;
+		}
+		btn4.onclick = function(){
+			var html = '<h2>今天天气不错</h2>';
+			box.innerHTML = html;
+		}
+		btn5.onclick = function(){
+			var html = '<img src="img/钢铁侠.jpg" alt="" /><p>我是钢铁侠</p>'
+			box2.innerHTML = html;
+		}
+	</script>
+</body>
+</html>
