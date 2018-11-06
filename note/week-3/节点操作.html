@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.danger{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<h1 class="title" id="title1">不凡</h1>
+	<h2>前端开发</h2>
+	<button class="btn">删除danger样式</button>
+	<!-- 获取:getAttribute(名称)
+	设置:setAttribute(名称,值)
+	删除:removeAttribute(名称) -->
+
+	<script>
+		var h2 = document.getElementsByTagName('h2')[0];
+		var btn = document.getElementsByClassName('btn')[0];
+		var h1 = document.getElementsByClassName('title')[0];
+		h2.onclick = function(){
+			// 动态给h2 标签添加class属性,且赋值 danger
+			h2.setAttribute("class","danger");
+		}
+
+		btn.onclick = function(){
+			h2.removeAttribute('class');
+		}
+
+		h1.onclick = function(){
+			var classStr = this.getAttribute('class');
+			var idStr = this.getAttribute('id');
+			console.log(classStr);
+			console.log(idStr);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/util.js"></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+			background:url('img/a.jpg') no-repeat;
+			/*css3新属性  */
+			background-size: 100%  100%;
+		}
+		ul{
+			list-style:none;
+		}
+		ul{
+			height: 150px;
+			background-color: rgba(255,255,255,.5);
+		}
+		ul li{
+			float: left;
+			margin-left:20px;
+			width: 200px;
+			height:100%;
+
+		}
+		ul li img{
+			width: 100%;
+			height: 100%;
+		}
+		/*li如果被激活的时候  才具备边框的样式*/
+		ul .img-item.active{
+			border:4px solid red;
+		}
+	</style>
+</head>
+<body>
+	<ul class="img-header">
+	
+	</ul>
+
+	<script>
+		var imgs = ['a.jpg','sjl.jpg','hulk.jpg','钢铁侠.jpg','m2.jpg','m3.jpg','m4.jpg'];
+		var imgsHeader = document.getElementsByClassName('img-header')[0];
+		initHtml(imgsHeader,imgs);
+
+		var lis = document.getElementsByClassName('img-item');
+		var target = document.body;
+		for(var i = 0 ; i < lis.length ; i++){
+			lis[i].onclick = function(){
+				var child = this.children[0];
+				var imgUrl = child.getAttribute('src');
+				target.style.backgroundImage = 'url('+imgUrl+')';
+
+				for(var j = 0 ; j < lis.length ; j++){
+					delClass(lis[j],'active');
+				}
+				addClass(this,'active');
+			}
+		}
+
+		function initHtml(el,imgs){
+			var str = '';
+			for(var i = 0 ; i < imgs.length ; i++){
+				str += '<li class="img-item"><img src="img/'+imgs[i]+'" alt=""></li>';
+			}
+			el.innerHTML = str;
+		}
+	</script>
+</body>
+</html>

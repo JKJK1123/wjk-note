@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.danger{
+			color:red;
+		}
+		.strong{
+			font-weight: bolder;
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	<p class="danner strong">今天天气不错</p>
+	<p id="p2">今天天气下雨</p>
+	<button class="btn1">添加danger</button> 
+	<button class="btn2">添加strong</button>
+	<button class="btn3">删除danger</button>
+	<button class="btn4">删除strong</button>
+
+	<script>
+		var pEl = document.getElementById('p2');
+		var btn1 = document.getElementsByClassName('btn1')[0];
+		var btn2 = document.getElementsByClassName('btn2')[0];
+		var btn3 = document.getElementsByClassName('btn3')[0];
+		var btn4 = document.getElementsByClassName('btn4')[0];
+
+		// 给p标签添加danger样式
+		btn1.onclick = function(){
+			addClass(pEl,'danger');
+		}
+		btn2.onclick = function(){
+			addClass(pEl,'strong');
+		}
+		btn3.onclick = function(){
+			delClass(pEl,'danger');
+		}
+		btn4.onclick = function(){
+			delClass(pEl,'strong');
+		}
+		/**
+		*动态添加class
+		**/
+		function addClass(el,className){
+			var oldClassStr = el.getAttribute('class')
+			if (!oldClassStr) {
+				el.setAttribute('class',className);
+				return;
+			}
+			var oldClassArr = oldClassStr.split(' ');
+			if(oldClassArr.indexOf(className)!=-1){
+				return
+			}
+			oldClassStr += ' '+className;
+			el.setAttribute('class',oldClassStr);
+		}
+
+
+		function delClass(el,className){
+			if (!el.getAttribute('class')) {
+				return;
+			}
+			var oldClassStr = el.getAttribute('class');
+			var oldClassArr = oldClassStr.split(' ');
+			var index = oldClassArr.indexOf(className);
+			if (index!=-1){
+				oldClassArr.splice(index,1);
+				oldClassStr = oldClassArr.join(' ');
+				el.setAttribute('class',oldClassStr);
+			}
+		}
+	</script>
+</body>
+</html>

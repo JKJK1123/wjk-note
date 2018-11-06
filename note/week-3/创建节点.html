@@ -5,10 +5,50 @@
 	<title>Document</title>
 </head>
 <body>
-	增删改查 CURD
-		c  create
-		u  update
-		r  read
-		d  delete
+		<!-- 	增删改查 CURD
+				c  create
+				u  update
+				r  read
+				d  delete -->
+	<div class="box">
+		
+	</div>
+	<button class="btn">删除img2照片</button>
+	<button class="btn2">clone box</button>
+
+	<script>
+		var boxDiv = document.getElementsByClassName('box')[0];
+		var btn = document.getElementsByClassName('btn')[0];
+		var btn2 = document.getElementsByClassName('btn2')[0];
+
+		// 创建一个p标签
+		var pEle = document.createElement('p');
+		pEle.innerText = '今天天气不错';
+		var img = document.createElement('img');
+		var img2 = document.createElement('img');
+		img.src = 'img/fbb.jpg';
+		img2.src = 'img/fbb.jpg';
+		// 通过父类节点插入子节点
+		boxDiv.appendChild(pEle);
+		boxDiv.appendChild(img);
+		// 同一个对象不能重复插入
+		boxDiv.insertBefore(img2,pEle);
+		btn.onclick = function(){
+			// 父节点.removeChild(子节点)
+			// boxDiv.removeChild(img2);
+			// node.parentNode.removeChild(node);
+			img2.parentNode.removeChild(img2);
+		}
+		btn2.onclick = function(){
+			var scriptEle = document.getElementsByTagName('script')[0];
+			// 克隆标签节点,如果没有传递true则为浅克隆
+			var newbox = boxDiv.cloneNode(true);
+			// 单clone不插入是没有效果的
+			// document.body  获取body对象
+			// document.body.appendChild(newbox);
+			document.body.insertBefore(newbox,scriptEle);
+		}
+
+	</script>
 </body>
 </html>

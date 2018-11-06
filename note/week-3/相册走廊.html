@@ -45,7 +45,10 @@
 		for(var i = 0 ; i < lis.length ; i++){
 			lis[i].onclick = function(){
 				var child = this.children[0];
-				var imgUrl = child.src;
+				// 1.对象获取属性
+				// var imgUrl = child.src;
+				// 2.标签获取属性
+				var imgUrl = child.getAttribute('src');
 				target.src = imgUrl;
 			}
 		}

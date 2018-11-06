@@ -17,11 +17,10 @@
 	<img src="img/fbb.jpg" alt="" class="img">
 	<script>
 		var imgs = ['a.jpg','fbb.jpg','hulk.jpg','sjl.jpg','钢铁侠.jpg'];
-		// 点击照片 动态改变照片
-		var imgEl = document.getElementsByClassName('img')[0];
-		imgEl.onclick = function(){
+		var imgEl1 = document.getElementsByClassName('img')[0];
+		imgEl1.onclick = function(){
 			var randomIndex = Math.floor(Math.random()*imgs.length);
-			this.src = 'img/'+ imgs[randomIndex];
+			this.src = 'img/'+imgs[randomIndex];
 		}
 	</script>
 </body>
