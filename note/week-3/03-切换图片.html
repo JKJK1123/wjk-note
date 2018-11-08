@@ -17,10 +17,10 @@
 	<img src="img/fbb.jpg" alt="" class="img">
 	<script>
 		var imgs = ['a.jpg','fbb.jpg','hulk.jpg','sjl.jpg','钢铁侠.jpg'];
-		var imgEl1 = document.getElementsByClassName('img')[0];
-		imgEl1.onclick = function(){
-			var randomIndex = Math.floor(Math.random()*imgs.length);
-			this.src = 'img/'+imgs[randomIndex];
+		var imgEl = document.getElementsByClassName('img')[0];
+		imgEl.onclick = function(){
+			var lis = Math.floor(Math.random()*imgs.length);
+			this.src = 'img/'+imgs[lis];
 		}
 	</script>
 </body>

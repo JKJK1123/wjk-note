@@ -44,31 +44,34 @@
 		/**
 		*动态添加class
 		**/
-		function addClass(el,className){
-			var oldClassStr = el.getAttribute('class')
-			if (!oldClassStr) {
-				el.setAttribute('class',className);
+		function addClass(el,classname){
+			// 获取旧样式
+			var oldClassStr = el.getAttribute('class');
+			// 如果连class都没直接添加
+			if(!oldClassStr){
+				el.setAttribute('class',classname);
 				return;
 			}
+			// 转化成数组判断里面是否已经添加过
 			var oldClassArr = oldClassStr.split(' ');
-			if(oldClassArr.indexOf(className)!=-1){
-				return
+			if (oldClassArr.indexOf(classname)!=-1) {
+				return;
 			}
-			oldClassStr += ' '+className;
+			oldClassStr += ' '+classname;
 			el.setAttribute('class',oldClassStr);
 		}
 
 
-		function delClass(el,className){
+		function delClass(el,pNode){
 			if (!el.getAttribute('class')) {
 				return;
 			}
-			var oldClassStr = el.getAttribute('class');
+			var oldClassStr = el.getAttribute('class')
 			var oldClassArr = oldClassStr.split(' ');
-			var index = oldClassArr.indexOf(className);
-			if (index!=-1){
+			var index = oldClassArr.indexOf(pNode);
+			if (index!=-1) {
 				oldClassArr.splice(index,1);
-				oldClassStr = oldClassArr.join(' ');
+				oldClassStr = oldClassArr.join('');
 				el.setAttribute('class',oldClassStr);
 			}
 		}

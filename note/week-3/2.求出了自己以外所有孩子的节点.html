@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li class="li1">li_1</li>
+		<li class="li2">li_2</li>
+		<li class="li3">li_3</li>
+		<li class="li4">li_4</li>
+		<li class="li5">li_5</li>
+		<li class="li6">li_6</li>	
+	</ul>
+
+	<script>
+		var li4 = document.getElementsByClassName('li4')[0];
+		var rs =  getSiblings(li4);
+		var rs =  getSiblings2(li4);
+		console.log(rs);
+		function  getSiblings(el){
+			var str = [];
+			// 通过子类找到父类
+			var pNode = el.parentNode;
+			// 获取所有孩子
+			var lis = pNode.children;
+			for(var i = 0; i < lis.length ; i++){
+				if (lis[i].nodeType==1) {
+					if(lis[i] !== el){
+						str.push(lis[i]);
+					}
+				}
+			}
+			return str;
+		}
+
+		// 前面所有兄弟的节点
+		function presiblings(el){
+			var str = [];
+			var pNode = el.parentNode;
+			var lis = pNode.children;
+			for(var i = 0 ; i < lis.length ; i++){
+				if (lis[i] == el) {
+					break;
+				}else {
+					str.push(lis[i]);
+				}
+			}
+			return str;
+		}
+
+		// 找到后面所有兄弟的节点
+		function nextSiblings(el){
+			var str = [];
+			var pNode = el.parentNode;
+			var lis = pNode.children;
+			for(var i = lis.length-1 ; i >= 0 ; i--){
+				if (lis[i] == el) {
+					break;
+				}else {
+					str.push(lis[i]);
+				}
+			}
+			return str
+		}
+
+		function nextSiblings(el){
+			var rs = [];
+			// 1.找到父类节点
+			var pNode = el.parentNode;
+			//2.找到所有的孩子节点
+			var lis = pNode.children;
+			//3.遍历孩子节点集合 
+			for(var i = lis.length-1 ; i>=0 ; i--){
+				if(lis[i].nodeType == 1){
+					//4.如果找到某个元素 直接终止循环
+					if(lis[i] == el){
+						break;
+					}else{
+						rs.push(lis[i]);
+					}
+				}
+			}
+			//数组翻转
+			rs.reverse();
+			return rs;
+		}
+
+
+		function nextSiblings_2(el){
+			var rs = [];
+			var pNode = el.parentNode;
+			var lis = pNode.children;
+			// 锁
+			var lock = false;
+			for(var i = 0 ; i <lis.length ; i++){
+				if(lis[i].nodeType == 1){
+					if (lis[i] = el) {
+						lock = true;
+						continue;
+					}
+					if (lock) {
+						rs.push(lis[i]);
+					}
+				}
+			}
+		}
+	</script>
+</body>
+</html>

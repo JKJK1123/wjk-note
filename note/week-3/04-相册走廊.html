@@ -41,15 +41,12 @@
 	</ul>
 	<script>
 		var lis = document.getElementsByClassName('img-item');
-		var target = document.getElementsByClassName('bgc-img')[0];
-		for(var i = 0 ; i < lis.length ; i++){
+		var imgEl = document.getElementsByClassName('bgc-img')[0];
+
+		for(var i = 0 ; i < lis.length-1; i++){
 			lis[i].onclick = function(){
 				var child = this.children[0];
-				// 1.对象获取属性
-				// var imgUrl = child.src;
-				// 2.标签获取属性
-				var imgUrl = child.getAttribute('src');
-				target.src = imgUrl;
+				imgEl.src = child.src
 			}
 		}
 	</script>

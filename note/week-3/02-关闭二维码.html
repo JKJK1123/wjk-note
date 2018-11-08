@@ -46,15 +46,15 @@
 		var btn = document.getElementsByClassName('btn')[0];
 		var mask = document.getElementsByClassName('mask')[0];
 
+		
 		btn.onclick = function(){
-			//显示
 			mask.style.display = 'block';
-			//隐藏按钮
-			this.style.display = 'none';
+			btn.style.display = 'none';
 		}
+
 		mask.onclick = function(){
-			this.style.display = 'none';
-			btn.style.display = 'block';
+			mask.style = 'block';
+			btn.style = 'none';
 		}
 	</script>
 </body>

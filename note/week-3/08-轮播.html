@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.swiper{
+			position: relative;
+			width: 700px;
+			height: 460px;
+			/*左右居中*/
+			margin:100px auto;
+			background-color: pink;
+		}
+		.swiper .img{
+			width: 100%;
+			height: 100%;
+		}
+		.swiper .arr{
+			position: absolute;
+			left: 0;
+			top: 50%;
+			display:block;
+			width: 40px;
+			height: 72px;
+			font-size:20px;
+			line-height: 72px;
+			text-align:center;
+			color: #fff;
+			margin-top: -36px;
+			/*去掉下划线*/
+			text-decoration: none;
+			background-color:rgba(0,0,0,.3);
+		}
+		/*当定位的left和right同时生效的时候,left的优先级更高.*/
+		.swiper .arr.arr-right{
+			/*left回复默认*/
+			left: auto;
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="swiper">
+		<img class="img" src="img/sjl.jpg" alt="">
+		<a href="javascript:void(0);" class="arr arr-left" onclick="swIPer(true)"><</a>
+		<a href="javascript:;" class="arr arr-right" onclick="swIPer(false)">></a>
+	</div>
+
+
+	
+	<script>
+		var imgs = ['sjl.jpg','hulk.jpg','a.jpg','钢铁侠.jpg'];
+		var imgEl = document.getElementsByClassName('img')[0];
+		var btnLeft = document.getElementsByClassName('arr-left')[0];
+		var btnRight = document.getElementsByClassName('arr-right')[0];
+
+		// 计数器
+		var count = 0;
+		function swIPer(a){
+			if (a) {
+				if (count == 0) {
+					count = imgs.length-1;
+				}else {
+					count --;
+				}
+			}else {
+				if (count == imgs.length-1) {
+					count = 0;
+				}else {
+					count ++;
+				}
+			}
+			imgEl.src = 'img/'+imgs[count];
+		}
+	</script>
+</body>
+</html>

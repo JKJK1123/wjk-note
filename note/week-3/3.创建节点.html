@@ -23,14 +23,21 @@
 
 		// 创建一个p标签
 		var pEle = document.createElement('p');
+		// 插入P标签
 		pEle.innerText = '今天天气不错';
+
+
+		// 创建一个img
 		var img = document.createElement('img');
+		// 创建一个img2
 		var img2 = document.createElement('img');
 		img.src = 'img/fbb.jpg';
 		img2.src = 'img/fbb.jpg';
 		// 通过父类节点插入子节点
 		boxDiv.appendChild(pEle);
 		boxDiv.appendChild(img);
+
+		
 		// 同一个对象不能重复插入
 		boxDiv.insertBefore(img2,pEle);
 		btn.onclick = function(){

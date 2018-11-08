@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/util.js"></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.swiper{
+			position: relative;
+			width: 700px;
+			height: 460px;
+			/*左右居中*/
+			margin:100px auto;
+			background-color: pink;
+		}
+		.swiper .img{
+			width: 100%;
+			height: 100%;
+		}
+		.swiper .arr{
+			position: absolute;
+			left: 0;
+			top: 50%;
+			display:block;
+			width: 40px;
+			height: 72px;
+			font-size:20px;
+			line-height: 72px;
+			text-align:center;
+			color: #fff;
+			margin-top: -36px;
+			/*去掉下划线*/
+			text-decoration: none;
+			background-color:rgba(0,0,0,.3);
+		}
+		/*当定位的left和right同时生效的时候,left的优先级更高.*/
+		.swiper .arr.arr-right{
+			/*left回复默认*/
+			left: auto;
+			right: 0;
+		}
+		.swiper .dotts{
+			position: absolute;
+			left: 300px;
+			bottom: 10px;
+			height: 10px;
+			list-style: none;
+		}
+		.swiper .dotts .dott-item{
+			float: left;
+			width: 10px;
+			height: 10px;
+			background-color: #fff;
+			margin-right:10px;
+		}
+		.swiper .dotts .dott-item.active{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="swiper">
+		<img class="img" src="img/sjl.jpg" alt="">
+		<a href="javascript:void(0);" class="arr arr-left" onclick="swIPer(true)"><</a>
+		<a href="javascript:;" class="arr arr-right" onclick="swIPer(false)">></a>
+		<ul class="dotts">
+		<!-- 	<li class="dott-item active"></li>
+			<li class="dott-item"></li>
+			<li class="dott-item"></li>
+			<li class="dott-item"></li> -->
+		</ul>
+	</div>
+
+	<script>
+	    var imgs = ['sjl.jpg','hulk.jpg','a.jpg','钢铁侠.jpg','fbb.jpg'];
+		var btnLeft = document.getElementsByClassName('arr-left')[0];
+		var btnRight = document.getElementsByClassName('arr-right')[0];
+		var imgEl = document.getElementsByClassName('img')[0];
+		var ulEl = document.getElementsByClassName('dotts')[0];
+
+		// 计数器
+		var count = 0;
+		initDotts(ulEl,imgs); //生成lis才能获取lis
+		//封装点击切换
+		function swIPer(a){
+			if(a){
+				if (count == 0) {
+					count = imgs.length-1;
+				}else {
+					count --;
+				}
+			}else {
+				if (count == imgs.length-1) {
+					count = 0;
+				}else {
+					count ++;
+				}
+			}
+			goNext(count);
+			// imgEl.src = 'img/'+imgs[count];
+			// // 设置下面小点 排他思想
+			// var lis = document.getElementsByClassName('dott-item');
+			// for(var i = 0 ; i < lis.length ; i++){
+			// 	delClass(lis[i],'active');
+			// }
+			// addClass(lis[count],'active');
+		}
+
+		// 封装生成li
+	    function initDotts(el,imgs){
+	    	var str = '';
+	    	for(var i = 0 ; i < imgs.length ; i++){
+	    		// if (i == 0 ) {
+	    		// 	str += '<li class="dott-item active"></li>';
+	    		// }else {
+	    		// 	str += '<li class="dott-item"></li>'
+	    		// }
+	    		str += '<li class="dott-item'+(i==0?' active':'')+'" onclick="goNext('+i+')"></li>'
+	    	}
+	    	el.innerHTML = str;
+	    }
+
+	    // 点小点跳转到第几张
+	    function goNext(count){
+	       window.count = count;
+	       imgEl.src = 'img/'+imgs[count];
+	       var lis = document.getElementsByClassName('dott-item');
+	       for(var i = 0; i < lis.length ; i++){
+	       	    delClass(lis[i],'active');
+	       }
+	       addClass(lis[count],'active');
+	    }
+	</script>
+</body>
+</html>
