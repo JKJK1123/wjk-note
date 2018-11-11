@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p class="time"></p>
+	<script>
+		// 明天12点结束
+		 var endDate = new Date('2018-11-12 17:00:00');
+		 var timeEl = document.getElementsByClassName('time')[0];
+
+
+		 var timer = setInterval(function(){
+		 	var str= countDown(endDate);
+		 	if(!str){
+		 		clearInterval(timer);
+				timeEle.innerHTML = '剩余时间00:00:00,活动结束!';
+			}else{
+				timeEle.innerText = str;
+			}
+		 },1000)
+
+
+		 function countDown(endDate){
+		 	// 当前时间
+		 	var nowDate = new Date();
+		    // 结束时间的时间戳
+		    var endTimestramp = endDate.getTime();
+		    var startTimestramp = nowDate.getTime();
+		    // 时间戳的差值 单位ms
+		    var cha = endTimestramp - startTimestramp;
+		    if (cha<0) {
+		    	return false;
+		    }
+		    // 把ms换算成 时 分 秒
+		    var SEC_MC = 1000;
+		    var MIN_MS = 60*SEC_MC;
+		    var HOUR_MS = 60*MIN_MS;
+
+		    // 小时
+		    var hour = Math.floor(cha/HOUR_MS);
+		    // 分
+		    var min = Math.floor((cha%HOUR_MS)/MIN_MS);
+		    // 秒
+		    var sec = Math.floor((cha%MIN_MS)/SEC_MC);
+		    hour = hour<10?('0'+hour):hour;
+			min = min<10?('0'+min):min;
+			sec = sec<10?('0'+sec):sec;
+			return hour+':'+min+':'+sec;
+		 }
+	</script>
+</body>
+</html>

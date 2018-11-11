@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="font/font-awesome-4.7.0/css/font-awesome.min.css">
+	<style>
+	    *{
+	    	margin: 0;
+	    	padding: 0;
+	    }
+	    ul{
+	    	list-style: none;
+	    }
+	    a{
+	    	text-decoration: none;
+	    }
+	    body{
+	    	font: 16px/1.2 '微软雅黑';
+	    }
+		.header{
+			width: 100%;
+			height: 40px;
+			background-color: #333;
+		}
+		.header .header-c{
+			position: relative;
+			width: 1226px;
+			height: 100%;
+			margin: 0 auto;
+		}
+		.header .header-c .header-c-nav{
+			position: relative;
+			font-size: 12px;
+			line-height: 40px;
+			width: 550.5px;
+			height: 100%;
+		}
+		.header .header-c .header-c-item{
+			float: left;
+
+		}
+		.header .header-c .header-c-item a{
+			display: inline-block;
+			height: 100%;
+			color: #b0b0b0;
+		}
+		.header .header-c .header-c-item span{
+			margin: 0 .3em;
+			color: #424242;
+		}
+		.header .header-c .header-c-item:hover a{
+			color: #fff;
+		}
+		.header .header-c .stting{
+			position: absolute;
+			right: 130px;
+			top: 0;
+			font-size: 12px;
+			color: #b0b0b0;
+			line-height: 40px;
+			/*width: 100px;*/
+			height: 100%;
+			/*background-color: red;*/
+		}
+		.header .header-c .stting a{
+			display: block;
+			float: left;
+			color: #b0b0b0;
+		}
+		.header .header-c .stting span{
+			float: left;
+			margin: 0 .5em;
+		}
+		.header .header-c .stting .stting-item:hover{
+			color: #fff;
+		}
+		.header .header-c .shopping{
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 120px;
+			height: 40px;
+			background-color: #424242;
+		}
+		.header .header-c .shopping .shoping-item{
+			display: block;
+			color: #b0b0b0;
+			line-height: 40px;
+			text-align: center;
+			font-size: 12px;
+
+		} 
+		.header .header-c .shopping .fa{
+			position: relative;
+			top: 3px;
+			line-height: 40px;
+			text-align: center;
+			font-size: 17px;
+		}
+		.header .header-c .shopping:hover .shoping-item{
+			background-color: #fff;
+			color: #ff6700;
+		}
+		.header .header-c .shopping .shopping-box{
+			display: none;
+			position: absolute;
+			top: 40px;
+			right: -1px;
+			border: 1px solid #666;
+			border-top: 0;
+			width: 200px; 
+			height: 100px;
+			font-size: 12px;
+			color: #b0b0b0;
+			line-height: 100px;
+			text-align: center;
+			background-color: #fff;
+		}
+		.header .header-c .shopping:hover .shopping-box{
+			display: block;
+		}
+		.banner{
+			width: 100%;
+			background-color: #fff;
+		}
+		.banner .banner-c{
+			width: 1226px;
+			margin: 0 auto;
+		}
+		.banner .banner-c .banner-c-top{
+			position: relative;
+			width: 100%;
+			height: 100px;
+		/*	background-color: red;*/
+		}
+		.banner .banner-c .banner-c-top .logo-box{
+			float: left;
+			width: 234px;
+			height: 100px;
+			overflow: hidden;
+		}
+		.banner-c .banner-c-top .logo-box .top-logo-left{
+			float: left;
+			display: block;
+			width: 55px;
+			height: 55px;
+			background: #ff6700 url(img/logo.png) no-repeat center;
+			margin-top: 22.5px;
+			margin-right: 14px;
+		}
+		.banner-c .banner-c-top .logo-box .top-logo-right{
+			float: left;
+			display: block;
+			width: 165px;
+			height: 100px;
+			background: url(img/logo1.gif) no-repeat center;
+		}
+		.banner .banner-c-top .top-nav{
+            float: left;
+			height: 100%;
+		}
+		.banner .banner-c-top .top-nav .nav-item{
+			float: left;
+			height: 100%;
+			/*字体垂直居中*/
+			line-height: 100px;
+			font-size: 16px;
+		}
+		.banner-c-top .top-nav .nav-item a{
+			display: block;
+			margin-left: 15px;
+			color: #333;
+		}
+		.banner-c-top .top-nav .nav-item:hover a{
+			color: #ff6670;
+		}
+		.banner .banner-c-top .search{
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 22.5px;
+			border: 1px solid #666;
+			width: 296px;
+			height: 50px;
+		/*	background-color: red;*/
+		}
+		.banner .banner-c-top .search-item{
+			position: relative;
+			width: 245px;
+			height: 100%;
+			outline: none;
+			border: none;
+			border-right: 1px solid #333;
+			font-size: 20px;
+			text-indent: 10px;
+		}
+		.banner .banner-c-top .search-a{
+			position: absolute;
+			right: 70px;
+			top: 15px;
+			height: 18px;
+			font-size: 12px;
+		}
+		.banner .banner-c-top .search-a a{
+			display: inline-block;
+			margin-left: 5px;
+			color: #757575;
+			background-color: #eee;
+		}
+		.banner .banner-c-top .search-btn{
+			position: absolute;
+			right: 0;
+			top: 0;
+			display: block;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+		}
+		.banner .banner-c-top .search-btn:hover{
+            background-color: #ff6670;
+            color: #fff;
+		}
+		.banner .search .search-item-s{
+			display: none;
+			width: 245px;
+			height: 300px;
+			border: 1px solid #666;
+			margin-left: -1px;
+		}
+		.banner .search .nav{
+			font-size: 12px;
+			line-height: 30px;
+			text-indent: 20px;
+		}
+		.banner .search .nav a{
+            color: #333;
+		}
+		.banner .search .nav .nav-item:hover{
+			background-color: #b0b0b0;
+		}
+		.banner .search .nav .nav-item{
+			position: relative;
+		}
+		.banner .search .nav span{
+			position: absolute;
+			right: 0;
+			color: #b0b0b0;
+		}
+		.banner .search .search-item:hover .search-item-s{
+            display: block;
+		}
+	</style>
+</head>
+<body>
+	<!-- 头部 -->
+	<div class="header">
+		<!-- 版心 -->
+		<div class="header-c">
+			<ul class="header-c-nav">
+				<li class="header-c-item left">
+				<a href="#">小米商城</a>
+				<span>|</span>
+			    </li>
+				<li class="header-c-item">
+				<a href="#">MIUI</a>
+				<span>|</span>
+			    </li>
+				<li class="header-c-item">
+				<a href="#">loT</a>
+				<span>|</span>
+			    </li>
+				<li class="header-c-item">
+				<a href="#">云服务</a>
+				<span>|</span>
+			    </li>
+				<li class="header-c-item">
+				<a href="#">金融</a>
+				<span>|</span>
+			    </li>
+				<li class="header-c-item">
+				<a href="#">有品</a>
+				<span>|</span>
+			    </li>
+				<li class="header-c-item">
+				<a href="#">小爱开放平台</a>
+				<span>|</span>
+			    </li>
+				<li class="header-c-item">
+				<a href="#">政企服务</a>
+				<span>|</span>
+			    </li>
+				<li class="header-c-item">
+				<a href="#" class="a1">下载app</a>
+				<span>|</span>
+			    </li>
+				<li class="header-c-item">
+				<a href="#">Select Region</a>
+			    </li>
+			</ul>
+			<div class="stting">
+				<a href="#" class="stting-item">登陆</a>
+				<span>|</span>
+				<a href="#" class="stting-item">注册</a>
+				<span>|</span>
+				<a href="#" class="stting-item">消息通知</a>
+			</div>
+			<div class="shopping">
+				<a href="#" class="shoping-item">
+				    <i class="fa fa-shopping-cart"></i>
+				    购物车(0)
+			    </a>
+			    <div class="shopping-box">
+			    	购物车还没有商品,赶紧选购吧
+			    </div>
+			</div>
+		</div>
+	</div>
+	<!-- banner部分 -->
+	<div class="banner">
+		<div class="banner-c">
+			<!-- 版心上部分 -->
+			<div class="banner-c-top">
+				<!-- logo盒子 -->
+				<div class="logo-box">
+					<a href="#" class="top-logo-left"></a>
+					<a href="#" class="top-logo-right"></a>
+				</div>
+	            <!-- 导航栏 -->
+				<ul class="top-nav">
+					<li class="nav-item active">
+						<a href="">小米手机</a>
+					</li>
+					<li class="nav-item">
+						<a href="">红米</a>
+					</li>
+					<li class="nav-item">
+						<a href="">电视</a>
+					</li>
+					<li class="nav-item">
+						<a href="">笔记本</a>
+					</li>
+					<li class="nav-item">
+						<a href="">空调</a>
+					</li>
+					<li class="nav-item">
+						<a href="">新品</a>
+					</li>
+					<li class="nav-item">
+						<a href="">路由器</a>
+					</li>
+					<li class="nav-item">
+						<a href="">智能配件</a>
+					</li>
+					<li class="nav-item">
+						<a href="">服务</a>
+					</li>
+					<li class="nav-item">
+						<a href="">社区</a>
+					</li>
+				</ul>
+				<!-- 搜索框 -->
+				<frome class="search">
+					<input type="text" class="search-item">
+					<div class="search-item-s">
+						<ul class="nav">
+							<li class="nav-item">
+								<a href="#">
+									小米6x 
+									<span>约有6件</span> 
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#">
+									小米MIX 2S
+									<span>约有6件</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#">
+									黑煞游戏手机
+									<span>约有6件</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#">
+									红米Note 5 
+									<span>约有6件</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#">
+								    小米5A
+								    <span>约有6件</span>
+							    </a>
+							</li>
+							<li class="nav-item">
+								<a href="#">
+									小米电视4c
+									<span>约有6件</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#">
+									电视32寸
+									<span>约有6件</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#">
+									笔记本pro
+									<span>约有6件</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#">
+									空气进化器
+									<span>约有6件</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#">
+									净水器
+									<span>约有6件</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="search-a">
+						<a href="#">小米8</a>
+						<a href="#">小米MIX 2s</a>
+					</div>
+					<a href="#" class="search-btn">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</a>
+				</frome>
+			</div>
+		</div>
+	</div>
+	<!-- 底部部分 -->
+	<div class="floor">
+		
+	</div>
+</body>
+</html>
