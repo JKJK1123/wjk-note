@@ -185,15 +185,18 @@
 			height: 50px;
 		/*	background-color: red;*/
 		}
-		.banner .banner-c-top .search-item{
+		.banner .banner-c-top .input{
 			position: relative;
 			width: 245px;
 			height: 100%;
+		}
+		.banner .banner-c-top .search-item{
 			outline: none;
 			border: none;
-			border-right: 1px solid #333;
 			font-size: 20px;
 			text-indent: 10px;
+			width: 245px;
+			height: 100%;
 		}
 		.banner .banner-c-top .search-a{
 			position: absolute;
@@ -213,6 +216,7 @@
 			right: 0;
 			top: 0;
 			display: block;
+			border-left: 1px solid #333;
 			width: 50px;
 			height: 50px;
 			line-height: 50px;
@@ -248,9 +252,213 @@
 			right: 0;
 			color: #b0b0b0;
 		}
-		.banner .search .search-item:hover .search-item-s{
-            display: block;
+		/*当具备激活样式的时候才能实现*/
+		.banner .search.active .search-item-s{
+			display: block;
 		}
+		.banner .search.active .search-a{
+			display: none;
+		}
+		.banner .search.active,
+		.banner .search.active .search-item-s,
+		.banner .search.active .search-btn{
+			border-color: #ff6700;
+		}
+		.banner .product{
+			position: absolute;
+			left: 0;
+			top: 140px;
+			display: none;
+			width: 100%;
+			height: 250px;
+			border: 1px solid gray;
+	/*		background-color: pink;*/
+		}
+		.banner .product.active,
+		.banner .product:hover {
+			display: block;
+		}
+		.banner .product .product-c{
+			width: 1226px;
+			height: 100%;
+			margin: 0 auto;
+			background-color: #fff;
+		}
+		.banner .product-c .pro-item{
+			float: left;
+			width: 203.8px;
+			height: 100%;
+			font-size: 12px;
+			color: #ff6700;
+		}
+		.banner .product-c .pro-item .title{
+			width: 40px;
+			height: 20px;
+			border: 1px solid #ff6700;
+			margin: 0 auto;
+			text-align: center;
+			line-height: 20px;
+		}
+		.banner .product-c .pro-item .img-link{
+			display: block;
+			width: 160px;
+			height: 115px;
+			margin: 13px auto;
+			border-right: 1px solid gray;
+		}
+		.banner .product-c .pro-item .img-link.active{
+			border: none;
+		}
+		.banner .product-c .pro-item .img{
+			width: 160px;
+			height: 115px;
+		}
+		.banner .product-c .pro-item .name{
+			display: block;
+			text-align: center;
+			line-height: 15px;
+			color: red;
+		}
+		.banner .product-c .pro-item .price{
+			text-align: center;
+			line-height: 15px;
+		}
+		.banner .banner-c .content{
+			position: relative;
+			width: 1226px;
+			height: 460px;
+			background-color: red;
+		}
+		.banner .content .bgc-item a{
+			display: block;
+			width: 1226px;
+			height: 460px;
+		}
+        .banner .content .bgc-item img{
+           width: 100%;
+           height: 460px;
+        }
+        .banner .content .btn{
+        	position: absolute;
+        	left: 234px;
+        	top: 195px;
+        	display: inline-block;
+        	width: 41px;
+        	height: 69px;
+/*        	background-color: #757575;*/
+        	background-color: rgb(0,0,0,.3);
+        	font-size: 50px;
+        	color: red;
+
+        }
+        .banner .content .btn-right{
+        	left: auto;
+        	right: 0;
+        }
+        .banner .content .btn:hover{
+        	background-color:  #757575;
+        }
+        .banner .bgc-img .dotts{
+        	position: absolute;
+        	right: 50px;
+        	bottom: 20px;
+        	height: 10px;
+        }
+         .banner .bgc-img .dotts .dotts-item{
+         	display: inline-block;
+         	width: 10px;
+         	height: 10px;
+         	margin-left: 10px;
+         	background-color: yellow;
+         }
+         .banner .bgc-img .dotts .dotts-item.active{
+         	background-color: red;
+         }
+         .banner .content .kind{
+         	position: absolute;
+         	top: 0;
+         	left: 0;
+         	display: inline-block;
+         	width: 234px;
+         	height: 460px;
+         	background-color: rgba(0,0,0,0.6)
+         }
+        .banner .content .kind .title{
+        	position: relative;
+        	width: 234px;
+        	height: 42px;
+        	font-size: 15px;
+        	line-height: 42px;
+        	text-indent: 20px;
+        }
+        .banner .content .kind .title.title-item{
+        	margin-top: 20px;
+        }
+        .banner .content .kind .title:hover {
+        	background-color: #ff6700;
+        }
+        .banner .content .title a{
+        	display: block;
+        	width: 100%;
+        	height: 100%;
+        	color: #fff;
+        }
+        .banner .content .title span{
+        	position: absolute;
+        	right: 20px;
+        	top: 2px;
+        	font-size: 16px;
+        	color: rgba(255,255,255,0.5);
+        }
+        .banner .content .kind-box{
+        	display: none;
+        	position: absolute;
+        	right: 0;
+        	top: 0;
+        	width: 992px;
+        	height: 100%;
+        	background-color: #fff;
+        	line-height: 77.38px;
+        }
+         .banner .content .kind-box.active,
+         .banner .content .kind-box:hover {
+         	display: block;
+         }
+        .banner .content .kind-box .kind-item{
+        	float: left;
+        	width: 248px;
+        	height: 100%;
+        }
+         .banner .content .kind-item .kind-items{
+         	position: relative;
+         	height: 76.6px;
+         	width: 100%;
+         }
+         .banner .content .kind-item .kind-items a{
+         	display: block;
+         	width: 265px;
+         	height: 77.38px;
+         	text-indent: 40px;
+         	margin-right: 20px;
+         	line-height: 77px;
+
+         }
+          .banner .content .kind-item .kind-items img{
+          	position: absolute;
+          	left: 20px;
+          	top: 20px;
+          	width: 40px;
+          	height: 40px;
+          }
+         .banner .content .kind-item .kind-items .name{
+         	display: inline-block;
+         	font-size: 12px;
+         	color: #333;
+         }
+          .banner .content .kind-item .kind-items a:hover .name{
+          	color: #ff6700;
+          }
+
 	</style>
 </head>
 <body>
@@ -361,8 +569,8 @@
 					</li>
 				</ul>
 				<!-- 搜索框 -->
-				<frome class="search">
-					<input type="text" class="search-item">
+				<div class="search">
+				    <input type="text" class="search-item">
 					<div class="search-item-s">
 						<ul class="nav">
 							<li class="nav-item">
@@ -425,7 +633,7 @@
 									<span>约有6件</span>
 								</a>
 							</li>
-						</ul>
+				        </ul>
 					</div>
 					<div class="search-a">
 						<a href="#">小米8</a>
@@ -434,13 +642,303 @@
 					<a href="#" class="search-btn">
 						<i class="fa fa-search" aria-hidden="true"></i>
 					</a>
-				</frome>
+				</div>
 			</div>
+			<!-- 版心内容 -->
+			<div class="content">
+				<ul class="bgc-img">
+					<li class="bgc-item">
+						<a href="#">
+							<img class="img" src="img/bgc1.jpg" alt="">
+						</a>
+						<div class="dotts">
+						<!-- 	<a href="#" class="dotts-item active"></a>
+							<a href="#" class="dotts-item"></a>
+							<a href="#" class="dotts-item"></a>
+							<a href="#" class="dotts-item"></a>
+							<a href="#" class="dotts-item"></a> -->
+						</div>
+					</li>
+				</ul>
+				<a href="#" class="btn btn-left" onclick="jump(true);" ><</a>
+				<a href="#" class="btn btn-right" onclick="jump(false);" >></a>
+				<ul class="kind">
+					<li class="title title-item">
+						<a href="#">
+							手机 电话卡
+							<span>></span>
+						</a>
+					</li>
+					<li class="title">
+						<a href="#">
+							电视 盒子
+							<span>></span>
+						</a>
+					</li>
+					<li class="title">
+						<a href="#">
+							笔记本 平板
+							<span>></span>
+						</a>
+					</li>
+					<li class="title">
+						<a href="#">
+							家电 插线板
+							<span>></span>
+						</a>
+					</li>
+					<li class="title">
+						<a href="#">
+							出行 穿戴
+							<span>></span>
+						</a>
+					</li>
+					<li class="title">
+						<a href="#">
+							智能 路由器
+							<span>></span>
+						</a>
+					</li>
+					<li class="title">
+						<a href="#">
+							电源 配件
+							<span>></span>
+						</a>
+					</li>
+					<li class="title">
+						<a href="#">
+							健康 儿童
+							<span>></span>
+						</a>
+					</li>
+					<li class="title">
+						<a href="#">
+							耳机 音响
+							<span>></span>
+						</a>
+					</li>
+					<li class="title">
+						<a href="#">
+							生活 箱包
+							<span>></span>
+						</a>
+					</li>
+				</ul>
+				<div class="kind-box">
+					<ul class="kind-item">
+						<li class="kind-items">
+							<a href="#" class="kind-a">
+								<img src="img/k-m1.png" alt="">
+								<p class="name">小米MIX 3</p>
+							</a>
+						</li>
+						<li class="kind-items">
+							<a href="#" class="kind-a">
+								<img src="img/k-m2.png" alt="">
+								<p class="name">小米8 青春版</p>
+							</a>
+						</li>
+						<li class="kind-items">
+							<a href="#" class="kind-a">
+								<img src="img/k-m3.png" alt="">
+								<p class="name">小米8 屏幕指纹版</p>
+							</a>
+						</li>
+						<li class="kind-items">
+							<a href="#" class="kind-a">
+								<img src="img/k-m4.png" alt="">
+								<p class="name">小米8</p> 
+							</a>
+						</li>
+						<li class="kind-items">
+							<a href="#" class="kind-a">
+								<img src="img/k-m5.png" alt="">
+								<p class="name">小米8 SE</p>
+							</a>
+						</li>
+						<li class="kind-items">
+							<a href="#" class="kind-a">
+								<img src="img/k-m6.png" alt="">
+								<p class="name">小米MIX 2S</p>
+							</a>
+						</li>
+					</ul>
+					
+				</div>
+			</div>
+		</div>
+		<!-- 产品 -->
+		<div class="product">
+			<ul class="product-c">
+				<!-- <li class="pro-item">
+					<p class="title">新品</p>
+					<a href="#" class="img-link">
+						<img src="img/pro-m1.png" alt="" class="img">
+					</a>
+					<a href="#" class="name">小米MIX 3</a>
+					<p class="price">3299元起</p>
+				</li>
+				<li class="pro-item">
+					<p class="title">新品</p>
+					<a href="#" class="img-link">
+						<img src="img/pro-m2.png" alt="" class="img">
+					</a>
+					<a href="#" class="name">小米8 青春版</a>
+					<p class="price">1399元起</p>
+				</li>
+				<li class="pro-item">
+					<p class="title">新品</p>
+					<a href="#" class="img-link">
+						<img src="img/pro-m3.png" alt="" class="img">
+					</a>
+				    <a href="#" class="name">小米8 屏幕指纹版</a>
+					<p class="price">3199元起</p>
+				</li>
+				<li class="pro-item">
+					<p class="title"></p>
+					<a href="#" class="img-link">
+						<img src="img/pro-m4.png" alt="" class="img">
+					</a>
+					<a href="#" class="name">小米8</a>
+					<p class="price">2699元起</p>
+				</li>
+				<li class="pro-item">
+					<p class="title"></p>
+					<a href="#" class="img-link">
+						<img src="img/pro-m5.png" alt="" class="img">
+					</a>
+					<a href="#" class="name">小米8 SE</a>
+					<p class="price">1799元起</p>
+				</li>
+				<li class="pro-item">
+					<p class="title"></p>
+					<a href="#"  class="img-link active">
+						<img src="img/pro-m6.png" alt="" class="img">
+					</a>
+					<a href="#" class="name">小米Max 3</a>
+					<p class="price">1699元起</p>
+				</li> -->
+			</ul>
 		</div>
 	</div>
 	<!-- 底部部分 -->
 	<div class="floor">
 		
 	</div>
+
+
+    <script src="js/util.js"></script>
+    <script src="js/nav-data.js"></script>
+    <script>
+    	// 获取search
+		var searchEl = document.getElementsByClassName('search')[0];
+		// 获取search-input输入框
+		var searchInputEl = document.getElementsByClassName('search-item')[0];
+		// 找到banner部分的所有nav列表
+		var navLis = document.getElementsByClassName('top-nav')[0].children;
+		var proListBlock = document.getElementsByClassName('product')[0];
+		var proListDetial = document.getElementsByClassName('product-c')[0];
+
+
+		var imgs = ['bgc1.jpg','bgc2.jpg','bgc3.jpg','bgc4.jpg','bgc5.jpg'];
+		var imgEl = document.getElementsByClassName('img')[0];
+		var btnLeft = document.getElementsByClassName('btn-left')[0];
+		var btnRight = document.getElementsByClassName('btn-right')[0];
+		var dottsItem = document.getElementsByClassName('dotts-item');
+		var Datts = document.getElementsByClassName('dotts')[0];
+         
+        var Kind = document.getElementsByClassName('kind')[0].children;
+        var KindBox = document.getElementsByClassName('kind-box')[0];
+
+		initNabHover(navLis,proListBlock);
+		initNabHover(Kind,KindBox);
+		generate(Datts,imgs);
+
+
+
+    	searchInputEl.onfocus = function () {
+			//给searchEl添加active样式
+			addClass(searchEl,'active');
+    	}
+    	searchInputEl.onblur = function(){
+			delClass(searchEl,'active');
+    	}
+
+    	function initNabHover(lis,target){
+    		for(var i = 0 ; i < lis.length ; i++){
+    		    // lis[i]是一个对象类型
+    			// 给对象添加属性
+    			lis[i].index = i;
+    			lis[i].onmouseover = function(){
+    			    // 触发添加属性
+    				addClass(target,'active');
+    				initNavDate(this.index,navdata,proListDetial);
+    			}
+    			lis[i].onmouseout = function(){
+    				// 离开清除属性
+    				delClass(target,'active')
+    			}
+    		}
+    	}
+
+          // index 点击第一个li
+          // date  数据源
+          // el    解析后给谁添加
+    	function initNavDate(index,date,el){
+    		var currentData = date[index];
+    		var str = '';
+    		for(var i = 0 ; i < currentData.length ; i++){
+    			var titleBtn = currentData[i].title?'<p class="title">'+currentData[i].title+'</p>':'<p class="title" style = "visibility: hidden;"></p>';
+    			str += '<li class="pro-item">'+titleBtn+'<a href="#" class="img-link">'
+					+ '<img class="img" src="'+currentData[i].img+'" alt=""></a>'
+					+ '<a href="#" class="name">'+currentData[i].name+'</a>'
+					+ '<p class="price">'+currentData[i].price+'</p></li>';
+    		}
+    		el.innerHTML = str;
+    	}
+
+    	// 计数器
+    	var count = 0;
+    	// 点击跳转
+    	function jump(a){
+    		if (a) {
+    			if (count == 0) {
+    				count = imgs.length-1;
+    			}else {
+    				count --;
+    			}
+    		}else {
+    			if (count == imgs.length-1) {
+    				count = 0;
+    			}else {
+    				count ++;
+    			}
+    		}
+    		goNext(count);
+    	}
+    	// 自动生成小点
+    	// el插入对象
+    	// imgs 小点的数量
+    	function generate(el,imgs){
+    		var str = '';
+    		for(var i = 0 ; i < imgs.length ; i++){
+    			if (i == 0) {
+    				str += '<a href="#" class="dotts-item active" onclick="goNext('+i+')" ></a>';
+    			}else {
+    				str += '<a href="#" class="dotts-item" onclick="goNext('+i+')"></a>'
+    			}
+    		}
+    		el.innerHTML = str ;
+    	}
+    	// 点击小点进行跳转
+    	function goNext(count){
+    		window.count = count;
+    		imgEl.src = 'img/'+imgs[count];
+    		for(var i = 0 ; i < dottsItem.length ; i++){
+    			delClass(dottsItem[i],'active');
+    		}
+    		addClass(dottsItem[count],'active');
+    	}
+    </script>
 </body>
 </html>
