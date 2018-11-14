@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			position: absolute;
+			width: 120px;
+			height: 120px;
+			background-color: green;
+		}
+		.btn1{
+			margin-top: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<button class="btn1">跳到400</button>
+	<button class="btn2">跳到800</button>
+
+	<script>
+		var btn1 = document.getElementsByClassName('btn1')[0];
+		var btn2 = document.getElementsByClassName('btn2')[0];
+		var d1El = document.getElementsByClassName('d1')[0];
+
+		btn1.onclick = function(){
+			d1El.style.left = '400px';
+		}
+		btn2.onclick = function(){
+			d1El.style.left = '800px';
+		}
+	</script>
+</body>
+</html>

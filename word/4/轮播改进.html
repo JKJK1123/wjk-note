@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			position: relative;
+			width: 400px;
+			height: 260px;
+			border: 1px solid red;
+			margin: 100px auto;
+			overflow: hidden;
+		}
+		.box .imgs{
+			list-style: none;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 400%;
+			height: 100%;
+		}
+		.box .imgs li{
+			float: left;
+			width: 400px;
+			height: 100%;
+			background-color: rgba(0,0,0,.5);
+		}
+		.box .imgs li img{
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul class="imgs">
+			<li><img src="img/pro-m1.png" alt=""></li>
+			<li><img src="img/pro-m2.png" alt=""></li>
+			<li><img src="img/pro-m3.png" alt=""></li>
+			<li><img src="img/pro-m4.png" alt=""></li>
+		</ul>
+	</div>
+	<button class="btn1">开启</button>
+
+
+	<script>
+		var imgEl = document.getElementsByClassName('imgs')[0];
+		var btn1 = document.getElementsByClassName('btn1')[0];
+		var timer = null;
+		// 一张照片的宽度
+		var targetEl = imgEl.children[0].offsetWidth;
+		// 目标距离
+		// var  target = -1*targetEl*(imgEl.children.length-1);
+		var lis = imgEl.children;
+
+		// 计数器
+		var count = 0;
+		btn1.onclick = function(){
+			setInterval(function(){
+					count ++;
+					if (count == lis.length) {
+						count = 0;
+						imgEl.style.left = 0;
+					}else {
+						var target = -1*targetEl*count;
+						kaiqi(imgEl,target);
+					}
+			},5000);
+		}
+		function kaiqi(el,target){
+			timer = setInterval(function(){
+				// 增加步数
+				var temp = target < el.offsetLeft?-5:5;
+				el.style.left = el.offsetLeft+temp+'px';
+				// 计算差
+				var cha = target-el.offsetLeft;
+				if (Math.abs(cha)<Math.abs(temp)) {
+					el.style.left = target+'px';
+					clearInterval(timer)
+				}
+			},17)
+		}
+	</script>
+</body>
+</html>

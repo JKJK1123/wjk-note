@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+		}
+		.btn{
+			margin-top: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		
+	</div>
+	<button class="btn btn1">跳转400</button>
+	<button class="btn btn2">跳转到800</button>
+
+	<script>
+		// leader 当前位置
+		// target   目标位置
+		// leader=leader+(target-leader)/10;
+		// 		0       400  
+		// 		40		360
+		// 		76		324
+		// 		108.4	...
+		// 		...
+		//		396.4   
+		// 		400		0
+		var btn1 = document.getElementsByClassName('btn1')[0];
+		var btn2 = document.getElementsByClassName('btn2')[0];
+		var boxEl = document.getElementsByClassName('box')[0];
+		var timer = null;
+		var target = 400;
+		var target2 = 800;
+
+		btn1.onclick = function(){
+			clearInterval(timer);
+			timer = setInterval(function(){
+			    var leader = boxEl.offsetLeft;
+			    var temp = (target-leader)/10;
+			    if (temp<1&&temp>0) {
+			    	temp=1;
+			    }else if (temp>1&&temp<0) {
+			    	temp=-1;
+			    }
+			    boxEl.style.left = leader + temp+'px';
+
+			    if (target==leader) {
+			    	boxEl.style.left = target+'px';
+			    	clearInterval(timer)
+			    }
+			},17)
+		}
+
+		btn2.onclick = function(){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				var leader = boxEl.offsetLeft;
+				var temp = (target2-leader)/10;
+				if (temp<1) {
+					temp=1;
+				}
+				boxEl.style.left = leader+temp+'px';
+				if (target2==leader) {
+					boxEl.style.left = target2+'px';
+					clearInterval(timer);
+				}
+			},17)
+		}
+	</script>
+
+</body>
+</html>

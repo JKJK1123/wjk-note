@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		.banner{
+			position: relative;
+			left: 0;
+			top: 0;
+			width: 600px;
+			height: 400px;
+			margin: 100px auto;
+			border: 10px solid red;
+			/*overflow: hidden;*/
+		}
+		.imgs{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 600%;
+			height: 100%;
+		}
+		.imgs .li-item{
+			float: left;
+			width: 600px;
+			height: 100%;
+		}
+		.imgs .li-item img{
+			width: 100%;
+			height: 100%;
+		}
+		a{
+			position: absolute;
+			left: 0;
+			top: 50%;
+			margin-top: -35px;
+			display: block;
+			width: 20px;
+			height: 70px;
+			background-color: rgb(0,0,0,.5);
+			line-height: 70px;
+			font-size: 15px;
+			color: red;
+			text-decoration: none;
+		}
+		.arr-right{
+			left: auto;
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="banner">
+		<ul class="imgs">
+			<li class="li-item">
+				<img src="img/pro-m1.png" alt="">
+			</li>
+			<li class="li-item">
+				<img src="img/pro-m2.png" alt="">
+			</li>
+			<li class="li-item">
+				<img src="img/pro-m3.png" alt="">
+			</li>
+			<li class="li-item">
+				<img src="img/pro-m4.png" alt="">
+			</li>
+			<li class="li-item">
+				<img src="img/pro-m1.png" alt="">
+			</li>
+		</ul>
+		<a onclick="goNext(false)" href="javascript:;" class="arr arr-left"><</a>
+		<a onclick="goNext(true)" href="javascript:;" class="arr arr-right">></a>
+	</div>
+
+	<script>
+		var imgEl = document.getElementsByClassName('imgs')[0];
+		var bannerEl = document.getElementsByClassName('banner')[0];
+		var timer = null;
+		var timer2 = null;
+		// 一张照片的宽度
+		var liW = document.getElementsByClassName('li-item')[0].offsetWidth;
+		outplay();
+
+		// 获取鼠标
+		bannerEl.onmouseout = function(){
+			clearInterval(timer2);
+		}
+		// 失去鼠标
+		bannerEl.onmouseleave = function(){
+			outplay();
+		}
+		// 计数器
+		var count = 0;
+		function outplay () {
+			timer2 = setInterval(function(){
+				count++;
+				if (count == imgEl.children.length) {
+					count = 1;
+					imgEl.style.left = '0';
+				}
+				var target = -1*count*liW;
+				animate(imgEl,target);
+			},2000)
+		}
+
+		// 封装无限轮播
+		// el谁动画
+		// target目标距离
+		function animate(el,target){
+			// 清除之前的
+			clearInterval(timer);
+			timer = setInterval(function(){
+				// 当前目标的距离
+				var leader = el.offsetLeft;
+				// 前进的步数
+				var temp = (target-leader)/10;
+				if (temp<1&&temp>0) {
+					temp=1
+				}else if (temp>-1&&temp<0) {
+					temp=-1;
+				}
+				el.style.left = leader+temp+'px';
+				if (leader==target) {
+					el.style.left = target+'px';
+					clearInterval(timer);
+				}
+			},17)
+		}
+
+
+		// 点击跳转封装
+		function goNext(isRight){
+			if (isRight) {
+				count++;
+				if (count == imgEl.children.length) {
+					count = 1;
+					imgEl.style.left = '0';
+				}
+				var target = -1*liW*count;
+				animate(imgEl,target);
+			}else
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		.banner{
+			position: relative;
+			left: 0;
+			top: 0;
+			width: 600px;
+			height: 400px;
+			margin: 100px auto;
+			border: 10px solid red;
+			overflow: hidden;
+		}
+		.imgs{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 600%;
+			height: 100%;
+		}
+		.imgs .li-item{
+			float: left;
+			width: 600px;
+			height: 100%;
+		}
+		.imgs .li-item img{
+			width: 100%;
+			height: 100%;
+		}
+		a{
+			position: absolute;
+			left: 0;
+			top: 50%;
+			margin-top: -35px;
+			display: block;
+			width: 20px;
+			height: 70px;
+			background-color: rgb(0,0,0,.5);
+			line-height: 70px;
+			font-size: 15px;
+			color: red;
+			text-decoration: none;
+		}
+		.arr-right{
+			left: auto;
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="banner">
+		<ul class="imgs">
+			<li class="li-item">
+				<img src="img/pro-m1.png" alt="">
+			</li>
+			<li class="li-item">
+				<img src="img/pro-m2.png" alt="">
+			</li>
+			<li class="li-item">
+				<img src="img/pro-m3.png" alt="">
+			</li>
+			<li class="li-item">
+				<img src="img/pro-m4.png" alt="">
+			</li>
+			<li class="li-item">
+				<img src="img/pro-m1.png" alt="">
+			</li>
+		</ul>
+		<a onclick="goNext(false)" href="javascript:;" class="arr arr-left"><</a>
+		<a onclick="goNext(true)" href="javascript:;" class="arr arr-right">></a>
+	</div>
+	<script>
+		var btn1 = document.getElementsByClassName('btn1')[0];
+		var imgEl = document.getElementsByClassName('imgs')[0];
+		var timer = null;
+		var bannerEl = document.getElementsByClassName('banner')[0];
+		var timer2 = null;
+		// 一个照片的宽度
+		var liW = document.getElementsByClassName('li-item')[0].offsetWidth;
+
+		// onmouseenter 鼠标进入触发
+		bannerEl.onmouseenter = function(){
+			clearInterval(timer2);
+			console.log('qingchu le ')
+		}
+		// onmouseleave 鼠标离开
+		bannerEl.onmouseleave = function(){
+			outgoplay();
+			console.log('likaile')
+		}
+		// 计数器
+		var count = 0;
+		// 自动缓动播放
+		outgoplay();
+		function outgoplay(){
+			timer2 = setInterval(function(){
+				count++
+				if (count == imgEl.children.length) {
+					count = 1;
+					imgEl.style.left = '0';
+				}
+				var target = -1*liW*count;
+				animate(imgEl,target);
+			},2000)
+		}
+
+		function goNext (isRight){
+			if (isRight) {
+				count ++;
+				if (count == imgEl.children.length) {
+					count = 1;
+					imgEl.style.left = '0';
+				}
+				var target = -1*liW*count;
+				animate(imgEl,target);
+			}else {
+				count--;
+				if (count == -1) {
+					count = imgEl.children.length-2;
+					imgEl.style.left = (-1*liW*count)+'px'
+				}
+				var target = -1*liW*count;
+				animate(imgEl,target);
+			}
+		}
+
+
+		// 封装匀速轮播的方法
+		// el谁动画
+		// target目标位置
+		function animate(el,target){
+			// 清除之前的
+			clearInterval(timer);
+			timer = setInterval(function(){
+				// 当前位置leader
+				var leader = el.offsetLeft;
+				// 移动的步数
+				var temp = (target-leader)/10;
+				if (temp<1&&temp>0) {
+					temp = 1;
+				}else if (temp>-1&&temp<0) {
+					temp = -1;
+				}
+				el.style.left = leader+temp+'px';
+				if (target==leader) {
+					el.style.left = target+'px';
+					clearInterval(timer);
+				}
+			},17)
+		}
+	</script>
+</body>
+</html>

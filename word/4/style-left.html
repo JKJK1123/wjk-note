@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d2{
+			width: 300px;
+			height: 200px;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1" style="width: 200px;height: 200px;background-color: green"></div>
+	<div class="d2">
+		
+	</div>
+
+	<script>
+		var d1El = document.getElementsByClassName('d1')[0];
+		var d2El = documentElement.getElementsByClassName('d2')[0];
+
+		// offset获取的结果是number类型
+		// style获取的结果是字符串类型
+		console.log(d1El.ofsetWidth);
+		// bom获取元素的宽度
+		console.log(d1El.style.width);
+		// 通过dom元素获取节点属性的形式获取width
+
+		console.log('======');
+		console.log(d2El,offsetWidth);
+		// obj.style.xx智能获取行内样式
+	</script>
+</body>
+</html>

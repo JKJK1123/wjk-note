@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			position: absolute;
+			width: 120px;
+			height: 120px;
+			background-color: green;
+		}
+		.btn1{
+			margin-top: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<button class="btn1">跳到400</button>
+	<button class="btn2">跳到800</button>
+
+	<script>
+		var btn1 = document.getElementsByClassName('btn1')[0];
+		var btn2 = document.getElementsByClassName('btn2')[0];
+		var d1El = document.getElementsByClassName('d1')[0];
+		var target = 405;
+		var target2 = 800;
+		var timer = null;
+
+		btn1.onclick = function(){
+			animate(d1El,target);
+		}
+		btn2.onclick = function(){
+			animate(d1El,target2);
+		}
+
+		function animate(el,target){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				var temp = el.offsetLeft>target?-10:10;
+				el.style.left = (el.offsetLeft+temp)+'px'
+				var cha = target-el.offsetLeft;
+				if (Math.abs(cha)<Math.abs(temp)) {
+					el.style.left = target+'px';
+					clearInterval(timer);
+				}
+			},17)
+		}
+	</script>
+</body>
+</html>

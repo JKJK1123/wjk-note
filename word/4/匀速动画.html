@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			position: absolute;
+			width: 120px;
+			height: 120px;
+			background-color: green;
+		}
+		.btn1{
+			margin-top: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<button class="btn1">跳到400</button>
+	<button class="btn2">跳到800</button>
+
+	<script>
+		var btn1 = document.getElementsByClassName('btn1')[0];
+		var btn2 = document.getElementsByClassName('btn2')[0];
+		var d1El = document.getElementsByClassName('d1')[0];
+		var target = 405;
+		var target2 = 800;
+
+		// 连续动画形成动画24帧
+		// 1s中连续播放24张图片,name图片形成动画
+		// 游戏:60fps
+		// var step = 10;
+		btn1.onclick = function(){
+			var timer = setInterval(function(){
+				var step = d1El.offsetLeft<target?10:-10;
+				d1El.style.left = (d1El.offsetLeft+step)+'px';
+				var cha = target-d1El.offsetLeft;
+				if (Math.abs(cha)<Math.abs(step)) {
+					d1El.style.left = target+'px';
+					clearInterval(timer);
+				}
+			},17);
+		}
+		btn2.onclick = function(){
+			var timer = setInterval(function(){
+				var step = d1El.offsetLeft<target2?10:-10;
+				d1El.style.left = (d1El.offsetLeft+step)+'px';
+				var cha = target2-d1El.offsetLeft;
+				if (Math.abs(cha)<Math.abs(step)) {
+					d1El.style.left = target2+'px';
+					clearInterval(timer);
+				}
+			},17)
+		}
+	</script>
+</body>
+</html>

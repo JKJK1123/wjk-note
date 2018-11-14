@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			position: relative;
+			width: 400px;
+			height: 400px;
+			background-color: pink;
+			margin-left: 100px;
+			margin-top: 200px;
+		}
+		.innerBox{
+			position: absolute;
+			left: 30px;
+			top: 30px;
+			width: 200px;
+			height: 200px;
+			border: 18px solid yellow;
+			background-color: green;
+		}
+		.innerBox2{
+			position: absolute;
+			left: 50px;
+			top: 50px;
+			width: 100px;
+			height: 100px;
+			background-color: purple;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="box">
+		<div class="innerBox">
+			<div class="innerBox2">
+				
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var innerBox = document.getElementsByClassName('innerBox')[0];
+		var innerBox2 = document.getElementsByClassName('innerBox2')[0];
+		console.log('innerBox.offsetParent==>'+innerBox.offsetParent.tagName);
+		// 1.是否包含元素的边框  不包含
+		// 2. el.offsetParent永远为真
+		function bodyLeft(el) {
+			// 没有找到定位元素的父类 
+			if(el.offsetParent.tagName == 'BODY'){
+				return el.offsetLeft;
+			}
+			return  el.offsetLeft + bodyLeft(el.offsetParent);
+		}
+		console.log(bodyLeft(innerBox2));
+
+	</script>
+</body>
+</html>
