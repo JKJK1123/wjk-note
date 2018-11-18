@@ -19,7 +19,7 @@
 			height: 400px;
 			margin: 100px auto;
 			border: 10px solid red;
-			overflow: hidden;
+	/*		overflow: hidden;*/
 		}
 		.imgs{
 			position: absolute;
@@ -55,6 +55,22 @@
 			left: auto;
 			right: 0;
 		}
+		.dotts{
+			position: absolute;
+			bottom: 10px;
+			left: 300px;
+			height: 10px;
+		}
+		.dotts .dott-item{
+			float: left;
+			width: 10px;
+			height: 10px;
+			margin-left: 10px;
+			background-color: yellow;
+		}
+		.dotts .dott-item.active{
+			background-color: red;
+		}
 	</style>
 </head>
 <body>
@@ -78,7 +94,14 @@
 		</ul>
 		<a onclick="goNext(false)" href="javascript:;" class="arr arr-left"><</a>
 		<a onclick="goNext(true)" href="javascript:;" class="arr arr-right">></a>
+		<ul class="dotts">
+			<!-- <li class="dott-item active"></li>
+			<li class="dott-item"></li>
+			<li class="dott-item"></li>
+			<li class="dott-item"></li> -->
+		</ul>
 	</div>
+	<script src="js/util.js"></script>
 	<script>
 		var btn1 = document.getElementsByClassName('btn1')[0];
 		var imgEl = document.getElementsByClassName('imgs')[0];
@@ -87,6 +110,7 @@
 		var timer2 = null;
 		// 一个照片的宽度
 		var liW = document.getElementsByClassName('li-item')[0].offsetWidth;
+		var count = 0;
 
 		// onmouseenter 鼠标进入触发
 		bannerEl.onmouseenter = function(){
@@ -98,43 +122,64 @@
 			outgoplay();
 			console.log('likaile')
 		}
-		// 计数器
-		var count = 0;
 		// 自动缓动播放
 		outgoplay();
 		function outgoplay(){
 			timer2 = setInterval(function(){
-				count++
-				if (count == imgEl.children.length) {
-					count = 1;
-					imgEl.style.left = '0';
-				}
-				var target = -1*liW*count;
-				animate(imgEl,target);
+				count ++;
+				console.log(count);
+				go(count);
 			},2000)
 		}
-
+		// 点击跳转
 		function goNext (isRight){
 			if (isRight) {
 				count ++;
-				if (count == imgEl.children.length) {
-					count = 1;
-					imgEl.style.left = '0';
-				}
-				var target = -1*liW*count;
-				animate(imgEl,target);
 			}else {
 				count -- ;
-				if(count<0){
-					imgsEl.style.left = -1*(imgsEl.children.length-1)*liW+'px';
-					//关键点 一般大脑无法想清楚 最好自己配合画图!!!
-					count = imgsEl.children.length-2;
-				}
 			}
-			var target =  -1*count*liW;
-			animate(imgsEl,target);
+			go(count);
 		}
+		// 封装count
+		function go(count){
+			// 修改外层计数器
+			window.count = count ;
+			if (count == imgEl.children.length) {
+				// 修改外层
+				window.count = 1;
+				imgEl.style.left = '0';
+			}
+			if (count<0) {
+					imgEl.style.left = -1*(imgEl.children.length-1)*liW+'px';
+					// 修改外层
+					window.count = imgEl.children.length-2;
+				}
+			var target = -1*liW*window.count;//修改外层
+			tiaozhuan(window.count);
+			animate(imgEl,target);
 
+			// 小点跟这跳动
+			function tiaozhuan(index){
+				if(index == imgEl.children.length-1){
+					index = 0;
+				}
+				var dottsEl = document.getElementsByClassName('dotts')[0];
+				for(var i = 0 ; i < dottsEl.children.length ; i++){
+					delClass(dottsEl.children[i],'active');
+				}
+				addClass(dottsEl.children[index],'active');
+			}
+		}
+		shengcheng();
+		// 生成小点
+		function shengcheng(){
+			var dottsEl = document.getElementsByClassName('dotts')[0];
+			var str = '';
+			for(var i = 0 ; i < imgEl.children.length-1; i++){
+				str += '<li onclick=go('+i+') class="dott-item'+(i==0?' active':'')+'"></li>'
+			}
+			dottsEl.innerHTML = str;
+		}
 
 		// 封装匀速轮播的方法
 		// el谁动画

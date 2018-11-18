@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			width: 400px;
+			height: 400px;
+			background-color: green;
+			margin: 200px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<script>
+		var d1El = document.getElementsByClassName('d1')[0];
+		// onmusemove可以减痛鼠标的移动事件
+		d1El.onmousemove = function(event){
+			console.log('当前鼠标位置:('+event.pageX+','+event.pageY+')')
+		}
+	</script>
+</body>
+</html>

@@ -19,13 +19,13 @@
 			height: 400px;
 			margin: 100px auto;
 			border: 10px solid red;
-		/*	overflow: hidden;*/
+			overflow: hidden;
 		}
 		.imgs{
 			position: absolute;
 			left: 0;
 			top: 0;
-			width: 500%;
+			width: 600%;
 			height: 100%;
 		}
 		.imgs .li-item{
@@ -55,22 +55,6 @@
 			left: auto;
 			right: 0;
 		}
-		.dotts{
-			position: absolute;
-			bottom: 10px;
-			left: 300px;
-			height: 10px;
-		}
-		.dotts .dott-item{
-			float: left;
-			width: 10px;
-			height: 10px;
-			margin-left: 10px;
-			background-color: yellow;
-		}
-		.dotts .dott-item.active{
-			background-color: red;
-		}
 	</style>
 </head>
 <body>
@@ -94,73 +78,73 @@
 		</ul>
 		<a onclick="goNext(false)" href="javascript:;" class="arr arr-left"><</a>
 		<a onclick="goNext(true)" href="javascript:;" class="arr arr-right">></a>
-		<ul class="dotts">
-			<li class="dott-item active"></li>
-			<li class="dott-item"></li>
-			<li class="dott-item"></li>
-			<li class="dott-item"></li>
-		</ul>
 	</div>
-	<script src="js/util.js"></script>
 	<script>
-		var timer = null;
-		var count = 0;
+		var btn1 = document.getElementsByClassName('btn1')[0];
 		var imgEl = document.getElementsByClassName('imgs')[0];
-		// 一张照片的宽度
-		var liW = document.getElementsByClassName('li-item')[0].offsetWidth;
+		var timer = null;
 		var bannerEl = document.getElementsByClassName('banner')[0];
-		zidong();
+		var timer2 = null;
+		// 一个照片的宽度
+		var liW = document.getElementsByClassName('li-item')[0].offsetWidth;
 
-		// 当获取鼠标的时候停止
+		// onmouseenter 鼠标进入触发
 		bannerEl.onmouseenter = function(){
 			clearInterval(timer2);
+			console.log('qingchu le ')
 		}
+		// onmouseleave 鼠标离开
 		bannerEl.onmouseleave = function(){
-			zidong();
+			outgoplay();
+			console.log('likaile')
 		}
-
-		// 点击进行跳转
-		function goNext(isRiht){
-			if (isRiht) {
-				count ++;
+		// 计数器
+		var count = 0;
+		// 自动缓动播放
+		outgoplay();
+		function outgoplay(){
+			timer2 = setInterval(function(){
+				count++
 				if (count == imgEl.children.length) {
 					count = 1;
-					imgEl.style.left = '0'
+					imgEl.style.left = '0';
 				}
 				var target = -1*liW*count;
-				huandong(imgEl,target);
-			}else {
-				count --;
-				if (count < 0) {
-					count = imgEl.children.length-2;
-					imgEl.style.left = -1*(imgEl.children.length-1)*liw;
-				}
-				var target = -1*liW*count;
-				huandong(imgEl,target);
-			}
+				animate(imgEl,target);
+			},2000)
 		}
-		// zidong动画
-		function zidong(){
-			timer2 = setInterval(function(){
+
+		function goNext (isRight){
+			if (isRight) {
 				count ++;
 				if (count == imgEl.children.length) {
 					count = 1;
 					imgEl.style.left = '0';
 				}
 				var target = -1*liW*count;
-				huandong(imgEl,target);
-			},2000)
+				animate(imgEl,target);
+			}else {
+				count -- ;
+				if(count<0){
+					imgEl.style.left = -1*(imgEl.children.length-1)*liW+'px';
+					count = imgEl.children.length-2;
+				}
+			}
+			var target =  -1*count*liW;
+			animate(imgEl,target);
 		}
-		// 封装缓动
-		// el 谁动画
-		// target 目标位置
-		function huandong (el,target){
+
+
+		// 封装匀速轮播的方法
+		// el谁动画
+		// target目标位置
+		function animate(el,target){
 			// 清除之前的
 			clearInterval(timer);
 			timer = setInterval(function(){
-				// 当前位置
-				var leader = el.offsetLeft ;
-				// 步数
+				// 当前位置leader
+				var leader = el.offsetLeft;
+				// 移动的步数
 				var temp = (target-leader)/10;
 				if (temp<1&&temp>0) {
 					temp = 1;
@@ -168,7 +152,8 @@
 					temp = -1;
 				}
 				el.style.left = leader+temp+'px';
-				if (target == leader) {
+				if (target==leader) {
+					el.style.left = target+'px';
 					clearInterval(timer);
 				}
 			},17)

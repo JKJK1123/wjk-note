@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			margin-top: 600px;
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<script>
+		var d1El = document.getElementsByClassName('d1')[0];
+		d1El.onclick = function(event){
+			// event只能在高级浏览器获取事件对象
+			// 在ie中需要通过window.event获取
+			// 兼容写法
+			var e = event || window.event;
+			// 被卷入的高度
+			var ttop =  window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+			var pageY = e.pageY || (e.clientY+ttop);
+			alert(pageY);
+		}
+	</script>
+</body>
+</html>

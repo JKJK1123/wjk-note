@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+		    position: absolute;
+		    left: 0;
+		    top: 0;
+		    width: 200px;
+		    height: 200px;
+		    background-color: green;
+		    /*修改光标*/
+		    cursor: move;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<script>
+		var d1El = document.getElementsByClassName('d1')[0];
+		d1El.onmousedown = function(event){
+			// 计算鼠标的初始位置
+			var starX = event.pageX - d1El.offsetLeft;
+			var starY = event.pageY - d1El.offsetTop;
+			// 监听document中的move事件
+			document.onmousemove = function(event){
+				d1El.style.left = (event.pageX-starX) + 'px';
+				d1El.style.top = (event.pageY-starY) + 'px';
+			}
+			// 当鼠标离开的时候取消document的move事件
+			d1El.onmouseup = function(){
+				document.onmousemove = null;
+			}
+		}
+	</script>
+</body>
+</html>

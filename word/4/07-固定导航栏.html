@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		.section-1{
+			width: 100%;
+			height: 100%;
+			background-color: red;
+		}
+		.section-2{
+			width: 100%;
+			height: 100%;
+			background-color: yellow;
+		}
+		.section-3{
+			width: 100%;
+			height: 100%;
+			background-color: blue;
+		}
+
+
+		.button-group{
+			position: fixed;
+			left: 200px;
+			top: 100px;
+			width: 270px;
+			height: 30px;
+			border: 2px solid #000;
+		}
+		.button-group a{
+			display: block;
+			float: left;
+			width: 90px;
+			height: 100%;
+			background-color: red;
+		}
+		.button-group .yellow{
+			background-color: yellow;
+		}
+		.button-group .blue{
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="section-1">
+		
+	</div>
+	<div class="section-2">
+		
+	</div>
+	<div class="section-3">
+		
+	</div>
+
+
+	<div class="button-group">
+		<a href="javascript:;" id="btn-1" class="btn red"></a>
+		<a href="javascript:;" id="btn-2" class="btn yellow"></a>
+		<a href="javascript:;" id="btn-3" class="btn blue"></a>
+	</div>
+
+	<script>
+		var timer = null;
+		var yellowbtn = document.getElementsByClassName('yellow')[0];
+	    // 一个section的高度
+		var sectionH = document.getElementsByClassName('section-1')[0].offsetHeight;
+
+		var aBtns = document.getElementsByClassName('btn');
+		for( var i = 0 ; i < aBtns.length ; i++){
+			aBtns[i].onclick = function(){
+				var id = this.getAttribute('id').split('-')[1];
+				console.log(id);
+				var target = sectionH*(parseInt(id)-1);
+				animate(target);
+			}
+		}
+
+		function animate(target){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				// 当前被卷入的高度
+				leader = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+				// 步长
+				var temp = (target-leader)/10;
+				if (temp<1&&temp>0) {
+					temp = 0;
+				}else if (temp>-1&&temp<0) {
+					temp = -1;
+				}
+				// window.scrollTo(0,leader+temp);
+				document.documentElement.scrollTop = leader+temp;
+				if (target==leader) {
+					clearInterval(timer);
+				}
+			},17)
+		}
+	</script>
+</body>
+</html>

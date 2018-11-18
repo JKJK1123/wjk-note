@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		.ads{
+			position: absolute;
+			right: 100px;
+			top:200px;
+			width: 100px;
+			height: 300px;
+			background-color: red;
+			color:yellow;
+			font-size: 18px;
+		}
+		.content{
+			width: 100%;
+			height: 600px;
+			background-color: green;
+			margin: 500px 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="ads">
+		中国人民喜迎油价上涨!!
+	</div>
+	<div class="content">
+		
+	</div>
+	<script>
+
+		var adsEl = document.getElementsByClassName('ads')[0];
+		// 1.求出初始的offsetTOp
+		var topBefor = adsEl.offsetTop;
+		window.onscroll = function  () {
+			//被卷进去的高度
+			var ttop =  window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+			var target = ttop+topBefor;
+			console.log(target);
+			animate(adsEl,target);
+		}
+		// el.timer xx
+
+		function animate(el,target){
+			// el.timer = null;
+			//把timer当做el对象的属性
+			// 这样 在函数外部如果想操作timer  只要取到el对象即可
+			clearInterval(el.timer);
+			// leader=leader+(target-leader)/10;
+			el.timer = setInterval(function(){
+				// 当前被卷进去的高度
+				var leader = el.offsetTop;
+				// console.log('offset==>'+leader);
+				// 步长  
+				var step = (target - leader )/10;
+				//最后10像素 修正step永远=1;
+				
+				if(step<1&&step>0){
+					step = 1;
+				}else if(step>-1&&step<0){
+					step = -1;
+				}
+				//修改元素位置
+				el.style.top = (leader + step) + 'px';
+				// window.scrollTo(0,leader+step);
+				
+				//终止条件
+				if(target==leader){
+					//恢复位置
+					// window.scrollTo(0,target);
+					el.style.top = target+'px';
+					clearInterval(el.timer);
+					console.log('结束了...');
+				}
+
+			},17);
+
+		}
+		
+	</script>
+</body>
+</html>
