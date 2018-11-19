@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<script>
+	console.log('当前浏览器的高度为:'+document.body.clientHeight);
+	console.log('当前浏览器的高度为:'+document.documentElement.clientHeight)  //ie和火狐都能用
+	console.log('当前浏览器的高度为:'+window.ineerHeight)//firefox 推荐使用(忽略滚动条的宽度)
+	//兼容写法
+	var cHeight = window.ineerHeight || document.documentElement.clientHeight;
+	console.log(cHeight);
+	</script>
+</body>
+</html>

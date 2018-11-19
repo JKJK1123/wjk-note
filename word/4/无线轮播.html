@@ -133,7 +133,7 @@
 				count --;
 				if (count < 0) {
 					count = imgEl.children.length-2;
-					imgEl.style.left = -1*(imgEl.children.length-1)*liw;
+					imgEl.style.left = -1*(imgEl.children.length-1)*liW+'px';
 				}
 				var target = -1*liW*count;
 				huandong(imgEl,target);
@@ -150,6 +150,17 @@
 				var target = -1*liW*count;
 				huandong(imgEl,target);
 			},2000)
+		}
+		// 小点根顺跳转
+		function xiaodian(index){
+			if (index==imgEl.children.length) {
+				index = 1;
+			}
+			var dottsEl = document.getElementsByClassName('dotts')[0];
+			for(var i = 0 ; i < dottsEl.children.length ; i++){
+				delClass(dottsEl.children[i],'active');
+			}
+			addClass(dottsEl.children[index],'active');
 		}
 		// 封装缓动
 		// el 谁动画

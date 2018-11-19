@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box,
+		.box-marry{
+			position: relative;
+			width: 400px;
+			height: 400px;
+			background: url(img/m1.jpg) no-repeat 0 0;
+			margin: 100px 200px;
+		}
+		.d1{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 150px;
+			height: 150px;
+			background: url(img/bg.png);
+		}
+		.box-marry{
+			position: absolute;
+			left: 500px;
+			top: 0;
+			margin: 0;
+			background-size: 800px 800px;
+		}
+	</style>
+</head>
+<body>
+	<!-- 要求拖动d1,但不允许d1超过box -->
+	<div class="box">
+		<div class="d1"></div>
+		<div class="box-marry"></div>
+	</div>
+	<script>
+		// d1按下鼠标,绑定事件
+		// 鼠标移动的时候改变d1的位置
+		// 鼠标松开的时候 取消movie监听事件
+
+
+		var boxEl = document.getElementsByClassName('box')[0];
+		var d1El = document.getElementsByClassName('d1')[0];
+		var boxElMarry = document.getElementsByClassName('box-marry')[0];
+
+           // d1El 按下鼠标
+		d1El.onmousedown = function(event){
+			// 鼠标点击的地方距离d1的距离 + box到浏览器的距离
+			var starLeft = event.pageX - this.offsetLeft;
+			// var rs = event.pageX;
+			// var st = d1El.offsetLeft;
+			// console.log(rs);
+			// console.log(st);
+			//鼠标到d1的距离
+			var starTop = event.pageY - this.offsetTop;
+			// 开始监听box
+			boxEl.onmousemove = function(event){
+				// d1到box的距离
+				var leftV = event.pageX - starLeft;
+				var topV = event.pageY - starTop;
+				if (leftV<0) {
+					leftV = 0;
+				}else if (leftV>this.offsetWidth-d1El.offsetWidth) {
+					leftV = this.offsetWidth-d1El.offsetWidth
+				}
+				if (topV<0) {
+					topV = 0;
+				}else if (topV>this.offsetHight-d1El.offsetHeight) {
+					topV = this.offsetHight-d1El.offsetHeight;
+				}
+				d1El.style.left = leftV + 'px';
+				d1El.style.top = topV + 'px';
+			}
+			d1El.onmouseup = function(){
+				boxEl.onmousemove = null
+			}
+		}
+	</script>
+</body>
+</html>

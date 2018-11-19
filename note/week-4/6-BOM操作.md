@@ -10,8 +10,10 @@
     4. offsetTop
         - 和定位的absolute属性的表现形式一样,如果父类(父类的父类..)有定位元素,则找父类,如果都没有,找body
         - 结果为number类型,只读属性
-
-    5. offsetParent
+    5. 和style.width/height/left/top的区别
+        - 数据类型
+        - 可读写
+    6. offsetParent
         - 找到当前元素偏移参照的父类元素
 ### scroll
     1. ScrollWidth/ScrollHeight(不包含border)
@@ -21,8 +23,8 @@
           盒子内容的宽高(如果有内容超过了,显示内容的高度)
     2. ScrollTop/ScrollLeft (网页,被浏览器遮挡的头部和左边部分)
         - 读取元素被卷进去的高度/left,值为nuber类型
-        - 读写属性.可以被重新赋值,但是应该的number类型(不能带px).document.documentElement.scrollTop =intvalue;
-    3. scrollTop兼容写法:
+        - 读写属性.可以被重新赋值,但是应该的number类型(不能带px)
+     scrollTop兼容写法:
           var top= window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
           var top= document.documentElement.scrollTop ||document.body.scrollTop
 
@@ -43,9 +45,11 @@
      
 
      - 事件对象的获取
-       IE 678 中,windo.event
-       在火狐谷歌中,event或者,事件绑定函数中加参,这个参就是event
-    - 兼容方式
+        IE 678 中,
+           windo.event
+        在火狐谷歌中,event或者,事件绑定函数中加参,这个参就是
+           function(event){event}
+    - 兼容写法
        var event = event||windo.event
     - event的属性
       event 事件对象 既触发这个事件的事件本身

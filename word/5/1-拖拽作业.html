@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			position: relative;
+			width: 600px;
+			height: 600px;
+			background-color: green;
+			margin: 100px auto;
+		}
+		.d1{
+		    position: absolute;
+		    left: 0;
+		    top: 0;
+		    width: 200px;
+		    height: 200px;
+		    background: transparent url(img/bg.png);
+		    cursor: move;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="d1">
+			
+		</div>
+	</div>
+	<script>
+		var boxEl = document.getElementsByClassName('box')[0];
+		var d1El = document.getElementsByClassName('d1')[0];
+		d1El.onmousedown = function(event){
+			//鼠标点击的地方距离d1的距离 + box到浏览器的距离
+			var starX = event.pageX - this.offsetLeft;
+			var starY = event.pageY - this.offsetTop;
+			boxEl.onmousemove = function(event){
+				// d1到box左边的距离
+				var leftV = event.pageX - starX;
+				var topV = event.pageY - starY;
+				if (leftV<0) {
+					leftV = 0;
+				}else if (leftV>this.offsetWidth-d1El.offsetWidth) {
+					leftV = this.offsetWidth-d1El.offsetWidth
+				}
+
+				if (topV<0){
+					topV = 0;
+				}else if (topV>this.offsetHeight - d1El.offsetHeight) {
+					topV = this.offsetHeight - d1El.offsetHeight;
+				}
+
+				d1El.style.left = leftV + 'px';
+				d1El.style.top = topV + 'px';
+			}
+			d1El.onmouseup = function(){
+				boxEl.onmousemove = null;
+			}
+		}
+	</script>
+</body>
+</html>
