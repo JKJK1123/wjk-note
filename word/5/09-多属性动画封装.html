@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<script>
+		var d1El= document.getElementsByClassName('d1')[0];
+		d1El.onclick = function (){
+			var that = this;
+			animate(this,{left:600,top:300,width:400,height:250},function(){
+				animate(that,{left:0,top:0,width:200,height:200},function() {
+					animate(that,{left:300,top:200,width:800,height:150},function(){
+						that.style.backgroundColor = 'red';
+					});
+				});
+			});
+		}
+
+		function animate(el,parents,fn){
+			clearInterval(el.timer);
+			el.timer = setInterval(function(){
+				var falt = true;
+				for(var key in parents){
+					var leader = getStyle(el,key);
+					var step = (parents[key]-leader)/10;
+					if (Math.abs(step)<1) {
+						step = step>0?Math.ceil(step):Math.floor(step);
+					}
+					el.style[key] = (step+leader)+'px';
+					if (leader!=parents[key]) {
+						falt = false
+					}
+					if (falt) {
+						clearInterval(el.timer);
+						if (fn) {
+							fn();
+						}
+					}
+				}
+			},17)
+		}
+		// 获取class值
+		function getStyle(el,attrs){
+			var rs = window.getComputedStyle(el,null)[attrs];
+			if(rs.indexOf('px')!=-1){
+				rs.substr(0,rs.length-2);
+				rs = parseInt(rs);
+			}
+			return rs;
+		}
+	</script>
+</body>
+</html>

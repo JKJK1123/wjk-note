@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul class="ul">
+    <li>li_1</li>
+    <li>li_2</li>
+    <li>li_3</li>
+  </ul>
+  <button class="btn1">动态生成li</button>
+  <script>
+    var ulEl = document.getElementsByClassName('ul')[0];
+    var btn1 = document.getElementsByClassName('btn1')[0];
+    var lis = ulEl.children;
+    // 这种绑定方式 对于未来才生成的元素 并不能其效果
+    // 事件委托
+    ulEl.onclick = function(event){
+      // 返回出发时间的元素
+      var el = event.target;
+      if(el.tagName!='UL'){
+        alert(el.innerText);
+      }
+    }
+    btn1.onclick = function(){
+      var count = Math.floor(Math.random()*3+1);
+      // 之前的li下标
+      var liLastIndex = lis.length;
+      // 先获取之前的
+      var str = ulEl.innerHTML;
+      for(var i = 0 ; i < count ; i ++){
+        str += '<li>li_'+(liLastIndex+i+1)+'</li>'
+      }
+      ulEl.innerHTML = str;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" class="qq"><button class="btn1">测试</button>
+
+	<script>
+		var btnEl = document.getElementsByClassName('btn1')[0];
+		var qqEl = document.getElementsByClassName('qq')[0];
+		btnEl.onclick = function(){
+			console.log(isQQ(qqEl.value));
+		}
+// https://baijiahao.baidu.com/s?id=1610426369331686828&wfr=spider&for=pc
+		
+	</script>
+</body>
+</html>

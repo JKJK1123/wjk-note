@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" class="qq"><button class="btn1">测试</button>
+
+	<script>
+		var btnEl = document.getElementsByClassName('btn1')[0];
+		var qqEl = document.getElementsByClassName('qq')[0];
+		btnEl.onclick = function(){
+			console.log(isQQ(qqEl.value));
+		}
+
+		function isQQ(qq){
+			// 假设符合条件
+			var flag = true;
+			if (qq.length<5 || qq.length >9) {
+				flag = true;
+			}
+			for( var i = 0 ; i < qq.length ;i++){
+				// charCodeAt()方法可返回指定位置的字符的 Unicode 编码
+				// 1-9 对应48-57
+				if (qq.charCodeAt(i)<48 || qq.charCodeAt(i)>57) {
+					flag = false;
+					break;
+				}
+			}
+			if (qq.indexOf(0)=='0') {
+				flag = false
+			}
+			return flag;
+		}
+	</script>
+</body>
+</html>

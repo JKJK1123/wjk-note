@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .d1{
+      width: 200px;
+      height: 200px;
+      background-color: green;
+      border:10px solid red;
+    }
+  </style>
+</head>
+<body>
+  <div class="d1" style="width:300px"></div>
+  <script>
+    var d1El = document.getElementsByClassName('d1')[0];
+    //这种获取方式  只能获取行内样式的值!!!
+    console.log(d1El.style.width);
+    // console.log(d1El.style.height);
+    //css是层叠样式表,展示的结果实际是由多个样式叠加的结果.
+    // window.getComputedStyle(el,null).attr
+    console.log(window.getComputedStyle(d1El,null).height);
+    console.log(window.getComputedStyle(d1El,null).backgroundColor); //rgb(0, 128, 0)
+    // 对于一个对象 如果需要获取其属性  
+    // 注意: 如果属性是一个变量或者字符串,需要用[xx]来获取该属性的值
+    // var user = {name:'张三'} ;  user.name==>'张三'; 
+    // var attr = 'name'; user[attr]==>'张三'
+    console.log(window.getComputedStyle(d1El,null)['background-color']); //rgb(0, 128, 0)
+    console.log(window.getComputedStyle(d1El,null)['border']); 
+    // 注意: 这种方式 获取的结果是一个字符串类型 不能直接参与运算!!
+
+    //ie8   div.currentStyle['width'];
+  </script>
+</body>
+</html>

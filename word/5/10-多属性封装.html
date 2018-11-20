@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+		    padding: 0;
+		}
+		.d1{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 200px;
+			height: 200px;
+			background-color: green;
+			font-size: 12px;
+			color: #fff;
+			opacity: .4;
+			z-index: 5;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		今天天气不错!
+	</div>
+
+	<script>
+		var d1El = document.getElementsByClassName('d1')[0];
+		d1El.onclick = function(){
+			var that = this;
+			animate(this,{left:600,top:300,width:400,height:250,fontSize:30,opacity:.8,zIndex:20});
+		}
+		function animate(el,params,fn){
+			clearInterval(el.timer);
+			el.timer = setInterval(function(){
+				var flag = true;
+				// params对象
+				for(var key in params){
+					// 目标距离
+					var target = params[key];
+					if (key == 'zIndex') {
+						key.style.zIndex = target;
+						continue;
+					}
+					var leader = getStyle(el,key);
+					if(key == 'opacity'){
+						//把透明度扩大100倍
+						leader = Math.floor(parseFloat(leader)*100);
+						//修改目标值
+						target = target*100;
+					}
+
+
+					var step = (target-leader)/10;
+					//修正step
+					if(Math.abs(step)<1){
+						step = step>0?Math.ceil(step):Math.floor(step);
+					}
+					if(key == 'opacity'){
+						//还原opacity的值
+						el.style.opacity = (leader+step)/100;
+					}else{
+						//计算当前位置
+						el.style[key] = (leader+step)+'px';
+					}
+					
+					//相等的时候清除
+					if(leader != target){
+						flag = false;
+					}
+				}
+
+				if(flag){
+					clearInterval(el.timer);
+					//当动画执行完毕后调用fn
+					if(fn){
+						fn();
+					}
+				}
+			},17)
+		}
+		// 获取class的值
+		function getStyle(el,a){
+			var rs = window.getComputedStyle(el,null)[a];
+			if (rs.indexOf('px')!=-1) {
+				rs.substr(0,rs.length-2);
+				rs = parseInt(rs);
+			}
+			return rs;
+		}
+	</script>
+</body>
+</html>

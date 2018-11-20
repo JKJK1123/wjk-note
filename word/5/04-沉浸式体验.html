@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .banner{
+      width: 100%;
+      height: 500px;
+      background: url(img/banner.jpg) no-repeat center;
+      /* 铺满 等比缩放 照顾中心区域 */
+      background-size: cover;
+    }
+    .container{
+      width: 100%;
+      height: 500px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+
+  </div>
+  <div class="container">
+
+  </div>
+  <script>
+    var bannerEl = document.getElementsByClassName('banner')[0];
+    var containerEl = document.getElementsByClassName('container')[0];
+    // 当页面宽高发生变化，就会触发
+    window.onresize = function(){
+      resizeBanner();
+    }
+    // 兼容写法
+    function resizeBanner(){
+      var cHeight = window.innerHeight||document.documentElement.clientHeight;
+			bannerEl.style.height = cHeight+'px';
+    }
+  </script>
+</body>
+</html>

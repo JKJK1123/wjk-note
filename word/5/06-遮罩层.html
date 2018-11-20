@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .mask {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .img {
+      display: block;
+      width: 200px;
+      height: 200px;
+      margin: 300px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mask">
+    <img src="img/wx.jpg" alt="" class="img">
+  </div>
+  <script>
+    var maskEl = document.getElementsByClassName('mask')[0];
+    var imgEl = document.getElementsByClassName('img')[0];
+    maskEl.onclick = function() {
+      this.style.display = 'none';
+    }
+    imgEl.onclick = function(e){
+      e.stopPropagation();
+    }
+  </script>
+</body>
+
+</html>
