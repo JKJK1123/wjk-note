@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+		.d2{
+			width: 400px;
+			height: 400px;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<div class="d2">
+		
+	</div>
+	<button class="btn2">清空d2</button>
+	<button class="btn3">clone</button>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		// 1.创建元素
+		// 可以把字符串转变为一个jq的dom对象
+		// var p = $('<p>我是一个p标签</p>')
+		$('.d1').html('<p>我是一个p标签</p>')
+		// 2.appden();
+		var pEl = $('<p>我是一个p标签</p>')
+		$('.d2').append(pEl);
+		// 3. appendTo 被字句 ==> 把字句
+		var p2El = $('<p>我是p2标签</p>');
+		p2El.appendTo($('.d2'));
+		// 4.after  后面
+		var imgEl = $('<img src="img/冬裙.jpg" />');
+		$('.d2').after(imgEl);
+		// 5. before 前面
+		var img2El = $('<img src="img/女包.jpg" />');
+		$('.d2').before(img2El);
+		$('.btn2').click(function  () {
+			// empty清空内容
+		 	// $('.d2').empty();
+		 	// $('.d2').html('');
+		 	//删除节点
+		 	// loading 用删除节点即可
+		 	$('.d2').remove();
+		 })
+		$('.btn3').click(function(){
+			// clone复制一个节点
+			var dom = $('.d2').clone();
+			$('.d1').after(dom);
+		})
+	</script>
+</body>
+</html>

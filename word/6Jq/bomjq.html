@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			position: relative;
+			left: 0;
+			top: 0;
+			width: 400px;
+			height: 400px;
+			background-color: pink;
+			margin-top: 600px;
+			margin-left: 200px;
+		}
+		.box .box1{
+			position: absolute;
+			left: 50px;
+			top: 50px;
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+		.box .box2{
+			position: absolute;
+			left: 20px;
+			top: 20px;
+			width: 100px;
+			height: 100px;
+			background-color: purple;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="box">
+		<div class="box1">
+			<div class="box2"></div>
+		</div>
+	</div>
+	<button class="goTop">goTop</button>
+
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		//之前有一个需求  求任意元素距离body边框的距离  $('xx').offset() ==>{left:xxx,top:xx}
+		console.log('box===>offset().left: '+ $('.box').offset().left);
+		console.log('box===>offset().top: '+ $('.box').offset().top);
+		console.log('box2===>offset().left: '+ $('.box2').offset().left);
+		console.log('box2===>offset().top: '+ $('.box2').offset().top);
+		$('.box2').click(function () {
+			$(this).offset({left:300,top:600});
+		})
+		console.log('===========');
+		console.log('box1===>position().left: '+$('.box1').position().left);
+		console.log('box1===>position().top: '+$('.box1').position().top);
+		console.log('box===>position().top: '+$('.box').position().top);
+		$('.goTop').click(function () {
+			// $(selector).scrollTop();
+			// $(document.documentElement).scrollTop(100);
+			// scrollTop  这个属性指被卷进去的高度
+			$(document.documentElement).animate({
+				scrollTop:100
+			})
+		})
+	</script>
+</body>
+</html>

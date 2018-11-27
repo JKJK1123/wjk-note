@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        .box{
+        	width: 300px;
+        	height: 250px;
+        /*	background-color: red;*/
+        	margin: 250px auto;
+        }
+        .Left{
+        	float: left;
+        	width: 48px;
+        	height: 100%;
+        }
+        .right .item a,
+        .Left .item a{
+        	display: block;
+        	width: 48px;
+        	height: 28px;
+        	border-bottom: 1px solid pink;
+        	background: url(img/lili.jpg);
+        	line-height: 28px;
+        	text-align: center;
+        	color: #333;
+        }
+        .bg{
+        	float: left;
+        	width: 200px;
+        	height: 250px;
+        	border-left: 1px solid pink;
+        	border-right: 1px solid pink;
+        }
+        .right{
+        	float: left;
+        	width: 48px;
+        	height: 100%;
+        }
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul class="Left">
+		</ul>
+		<img src="img/女包.jpg" alt="" class="bg">
+		<ul class="right">	
+		</ul>
+	</div>
+
+	<script src="js/data.js"></script>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		initNavList($('.Left'),data[0]);
+		initNavList($('.right'),data[1]);
+		bindMouseEvent($('.Left li'),data[0]);
+		// 动态生成li
+		function initNavList($el,data) {
+			// jq对象转换为dom元素
+			var pEl = $el[0];
+			var str = '';
+			for(var i = 0 ;i < data.length ; i++){
+				str += '<li class="item" id = "li_'+i+'"><a href="#">'+data[i].title+'</a></li>';
+			}
+			pEl.innerHTML = str;
+		}
+
+		function bindMouseEvent($li,data){
+			$li.mouseenter(function(){
+				// 获取hover元素的小标
+				var index = parseInt(this.id.split('_')[1]);
+				$('.bg')[0].src = data[index].img;
+			})
+		}
+	</script>
+</body>

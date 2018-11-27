@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul class="ul">
+		<li>li_1</li>
+		<li>li_2</li>
+		<li>li_3</li>
+		<li>li_4</li>
+		<li>li_5</li>
+		<li>li_6</li>
+	</ul>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		//jq释放对$的控制权
+		$.noConflict();
+		// 把jq的$给占用了!
+		// var $ = 'abc';
+		// var lis = $('.ul>li');
+		// for(var i = 0 ; i<lis.length ; i++){
+		// 	console.log($(lis[i]).text());
+		// }
+		// $(selector).each(function(index,element){});
+		//遍历一个集合
+		jQuery('.ul>li').each(function (index,ele) {
+			// console.log(index);
+			// console.log(ele);
+			console.log((index+1)+'的内容为:'+jQuery(ele).text());
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.d1{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<div class="d1">
+		
+	</div>
+	<script>
+		// quersSeleCtor  都是选择器  选择一个
+		// querySelectorAll  选择一个集合
+		var d1 = document.querySelector('.d1');
+		var d11 = document.querySelectorAll('.d1');
+		d1.style.backgroundColor = 'yellow';
+		for( var i = 0 ; i < d11.length ; i++){
+			d11[i].style.width = '300px'
+		}
+	</script>
+</body>
+</html>

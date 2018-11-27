@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<button class="btn1">解绑</button>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		// 监听是形式绑定
+		// 可以同时添加多个事件
+		$('.d1').on('click mouseenter',function(){
+			console.log('fff');
+		})
+		$('.btn1').click(function(){
+			// 解除绑定
+			$('.d1').off('click')
+		})
+	</script>
+</body>
+</html>

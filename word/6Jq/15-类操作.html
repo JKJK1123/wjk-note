@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.danger{
+			color: red;
+		}
+		.strong{
+			font-weight: bolder;
+		    font-size: 30px;
+		}
+		.em{
+			font-style: italic;
+		}
+	</style>
+</head>
+<body>
+	<p class="p1">我是一个p标签</p>
+	<button class="btn1">警告</button>
+	<button class="btn2">加粗</button>
+	<button class="btn3">斜体</button>
+	<button class="btn4">删除警告</button>
+	<button class="btn5">hasClass</button>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		$('.btn1').click(function(){
+			$('.p1').addClass('danger');
+		})
+		$('.btn2').click(function(){
+			$('.p1').addClass('strong');
+		})
+		$('.btn3').click(function(){
+			$('.p1').addClass('em');
+		})
+		$('.btn4').click(function(){
+			$('.p1').removeClass('danger');
+		})
+		$('.btn5').click(function(){
+			// hasClass默认是false
+			alert($('.p1').hasClass());
+		})
+		$('.btn6').click(function(){
+			// 两种形态奇幻
+			$('.p1').toggleClass('em')
+		})
+	</script>
+</body>
+</html>

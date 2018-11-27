@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.d1{
+			width: 200px;
+		    height: 200px;
+		    background-color: green;
+		}
+		.d2{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		<div class="d2">
+			
+		</div>
+	</div>
+	<input type="text" class="username">
+	<p class="text"></p>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		$('.d1').click(function(event){
+			alert('d1');
+			// 鼠标按键类型 which 
+			console.log(event.which);
+		})
+		$('.d2').click(function(event){
+			// 阻止冒泡
+			event.stopPropagation();
+			alert('.d2');
+		})
+		$('.username').keyup(function(event){
+			// 判断类型
+			console.log(event.keyCode);
+			// 回车
+			if (event.keyCode == 13) {
+				$('.text').css('background','green');
+			}else {
+				$('.text').text($(this).val());
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+	</style>
+	<script>
+		$(function(){
+			// d1是一个jq对象
+			var d1 = $('.d1');
+			// jq对象.css('attr','value') jq对象具有css方法能够方便的设置样式
+			d1.css('background-color','red');
+			$('.d1 .p1').css('color','yellow');
+			$('.d1 .p2').css('fontSize','20px');
+			$('#h1').css('color','green');
+		})
+	</script>
+</head>
+<body>
+	<div class="d1">
+		<p class="p1">
+			我的d1的p1
+		</p>
+	</div>
+	<div class="d1">
+		<p class="p2">
+			我是d1的p2
+		</p>
+	</div>
+	<div id="h1">
+		呵呵
+	</div>
+</body>
+</html>

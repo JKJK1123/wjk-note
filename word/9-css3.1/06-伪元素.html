@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	    /*实现了一个clear的样式用于清除浮动的影响*/
+	    .clear::after{
+	    	content:'';
+			display:block;
+			clear:both;
+			height:0;
+			overflow:hidden;
+			visibility:hidden;
+	    }
+	    /*针对低版本ie*/
+	    .clear{
+	    	zoom:1;
+	    }
+		.p1::before{
+			content: '前缀';
+			color: red;
+		}
+		.p1::after{
+			content: '后缀';
+			color: green;
+		}
+		.box{
+			border: 10px solid red;
+			width: 800px;
+			margin: 100 auto;
+		}
+		.d1,.d2{
+			float: left;
+			width: 300px;
+			height: 500px;
+			background-color: pink;
+		}
+		.d2{
+			width: 500px;
+			background-color: green;
+		}
+		/*之前清除浮动的影响*/
+		.clr{
+			clear: both;
+		}
+		ul{
+			list-style: none;
+		}
+		li{
+			position: relative;
+			width: 100px;
+			height: 30px;
+			background-color: green;
+			color: #fff;
+			margin-bottom: 20px;
+			font-size: 20px;
+			line-height: 30px;
+		}
+		li.hot::after{
+			position: absolute;
+			left: 30px;
+			top: 5px;
+			content: '';
+			display: block;
+			width: 20px;
+			height: 20px;
+			background: url(img/hot.png) no-repeat center;
+			background-size: 20px 20px;
+		}
+
+		.btn{
+			position: relative;
+			display: block;
+			width: 100px;
+			height: 30px;
+			background-color: blue;
+			color: yellow;
+			font-size: 20px;
+			text-align: center;
+			line-height: 30px;
+			text-decoration: none;
+			margin: 20px auto;
+		}
+		.btn::after,
+		.btn::before{
+			transition: all ease .4s;
+		}
+		.btn::before{
+			position: absolute;
+			top: 2px;
+			left: 0;
+			content: '[';
+			color: green;
+		}
+		.btn::after{
+			position: absolute;
+			right: 0;
+			top: 0;
+			content: ']';
+			color: green;
+		}
+		.btn:hover::after{
+			right: -50px;
+			font-size: 30px;
+		}
+		.btn:hover::before{
+			left: -50px;
+			font-size: 30px;
+		}
+		.p2{
+			width: 400px;
+			background-color: pink;
+		}
+		.p2::first-letter{
+			font-size: 30px;
+			font-weight: bolder;
+		}
+		.p2::first-line{
+			background-color: yellow;
+		}
+		.p2::selection{
+			color:green;
+			background-color: red;
+	</style>
+</head>
+<body>
+	<p class="p1">我是一个p标签</p>
+	<div class="box clear">
+		<div class="d1">
+			
+		</div>
+		<div class="d2">
+			
+		</div>
+		<!-- <div class="clr"></div> -->
+	</div>
+
+	<ul>
+		<li class="li-item">li_1</li>
+		<li class="li-item">li_2</li>
+		<li class="li-item hot">li_3</li>
+		<li class="li-item">li_4</li>
+		<li class="li-item">li_5</li>
+	</ul>
+
+	<a href="#" class="btn">特效按钮</a>
+	<p class="p2">
+		aadasd asd asfasfasfasfsdfsdfgdgdfgafdsfgsdg 多个高度广东省高度个 
+	</p>
+</body>
+</html>

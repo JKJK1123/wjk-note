@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.d1{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<input type="text" class="eventName" placeholder="请输入触发事件的名称">
+	<button class="btn1">触发点击事件</button>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		$('.d1').click(function(){
+			alert('d1');
+		})
+		$('.btn1').click(function(){
+			// 通过表单获取事件名称
+			var eventName = $('eventName').val()
+		    // 通过字符串 触发点击事件
+		    // $('.d1').trigger(eventName);
+		    $('.d1').triggerHandler(eventName);
+		})
+	</script>
+</body>
+</html>

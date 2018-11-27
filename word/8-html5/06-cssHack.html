@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 可以在一些低版本的浏览器中支持新标签,原理是把新的标签转换为div -->
+	<!-- 这个语法只有在ie才能识别 刚好实现了在ie中引入 转换的库 的需求 -->
+	<!--[if lte IE 8]> 
+		<script src="lib/html5shiv.min.js"></script> 
+	<![endif]-->
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		header{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: pink;
+		}
+	</style>
+	<!-- 针对ie浏览器的特定版本 制定特定样式   -->
+	<!--[if lte IE 8]> 
+		<link rel="stylesheet" href="ie8.css">
+	<![endif]-->
+</head>
+<body>
+	<header></header>
+	<div class="box">
+		
+	</div>
+</body>
+</html>

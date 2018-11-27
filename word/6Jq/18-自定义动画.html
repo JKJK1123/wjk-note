@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			position: absolute;
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+		.btn1{
+			position: fixed;
+			right: 100px;
+			top: 100px;
+			width: 200px;
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<button class="btn1">停止动画</button>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		$('.d1').click(function () {
+			// $(selector).animate(styles,speed,easing,callback)	
+			$(this).animate({
+				left:500,
+				top:200,
+				width:300,
+				height:120
+			},2000,'swing',function(){
+				// $('.d1').css('backgroundColor','pink');
+				// $(this).animate({
+				// 	left:0,
+				// 	top:0
+				// })
+			})
+
+			$(this).animate({
+				left:0,
+				top:0
+			})
+
+			$('.btn1').click(function () {
+				// stop(stopAll,goToEnd)
+				//默认停止所有动画,直接回到最初
+				//走哪停哪
+				$('.d1').stop(true);
+			})
+		})	
+
+	</script>
+
+</body>
+</html>

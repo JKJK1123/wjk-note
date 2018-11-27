@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			width: 200px;
+			height: 200px;
+			border: 12px solid red;
+			padding: 20px;
+			font-size: 30px;
+			border-top-width: 30px;
+			background-color: green;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="d1">
+		不凡学院不凡学院不凡学院不凡学院不凡学院不凡学院不凡学院不凡学院不凡学院不凡学院不凡学院不凡学院不凡学院
+	</div>
+
+	<script>
+		// 回顾bom
+		// 1.offset家族
+		// 	offetWidth/offsetHeight   元素宽高 包括padding+border
+		// 	offsetTop/offsetLeft   元素距离父类定位元素(body)的距离
+		// 2.scroll家族
+		// 	scrollWidth/scrollHeight   元素宽高 不包括border  指的元素内容的宽高
+		// 	scrollTop/scrollLeft    元素被卷进去的高度/宽度
+		// 							- 可以被赋值
+		// 3.clientWidth/clientHeight   客户端(可视区域)的宽高
+
+		
+		var d1 = document.getElementsByClassName('d1')[0];
+		console.log('offsetWidth===>'+d1.offsetWidth);
+		console.log('offsetHeight===>'+d1.offsetHeight);
+		console.log('scrollWidth===>'+d1.scrollWidth);
+		console.log('scrollHeight===>'+d1.scrollHeight);
+		//指的是客户端(可视区域)大小,如果应用在元素上,指的是元素的可视区域大小
+		console.log('clientWidth===>'+d1.clientWidth);
+		console.log('clientHeight===>'+d1.clientHeight);
+		console.log('clientLeft==>'+d1.clientLeft);
+		console.log('clientTop==>'+d1.clientTop);
+
+		
+
+	</script>
+</body>
+</html>

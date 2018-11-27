@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.d1{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		$('.d1').click(function(){
+			// 判断有属性 有的话删除
+			// attr()方法 设置或者返回被选元素的属性值
+			if($(this).attr('title')){
+				// removeAttr从被选元素中移除属性
+				$(this).removeAttr('title')
+			}else {
+				$(this).attr('title','我是一个div');
+			}
+		})
+	</script>
+</body>
+</html>

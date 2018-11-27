@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- action讲到ajax的时候再说  -->
+	<!-- novalidate 关闭表单的验证 -->
+	<!-- <form id="form1" action="/abc" novalidate> -->
+	<form id="form1" action="/abc">
+		<!-- required必填 -->
+		用户名:<input required type="text" oninput="bar(this);" name="username" placeholder="请输入用户名" autocomplete="on"><br>
+		密码: <input type="text" name="pwd" autofocus placeholder="请输入用户名"><br>
+		 <!-- 正则的写法??? setCustomValidity-->
+		 手机号1:<input type="text" name="phone1"  pattern="^[1-9][0-9]{5}$" oninvalid="setCustomValidity('请输入6位手机号');"/><br>
+		  手机号2:<input type="text" name="phone2"  pattern="[1-9][0-9]{5}" oninvalid="foo('电话格式错误!');"/><br>
+		上传头像: <input type="file" multiple>
+		<!-- <input type="submit"> -->
+		<!-- 即使可以用 也不要用!! -->
+		<!-- <input type="submit" formaction="http://www.baidu.com"> -->
+		<input type="submit">
+	</form>
+	<!--
+		form 可以把某个表单写道form外部 通过form属性指定form 一般也不要用!!
+		<input type="text" mame="age" form="form1"> -->
+	<script>
+		function foo(msg) {
+			alert(msg);
+		}
+		function bar(obj) {
+			console.log(obj.value);
+		}
+	</script>
+</body>
+</html>

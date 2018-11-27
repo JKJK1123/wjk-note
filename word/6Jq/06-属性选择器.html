@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<p>我是p标签</p>
+    <p title="p1">我是p1</p>
+    <p title="p2">我是p2</p>
+    <script>
+    	$('p').css('color','red');
+    	// 具备xx属性的标签
+    	$('p[title]').css('fontSize','30px');
+    	$('p[title = "p2"').css('backgroundColor','pink')
+    </script>
+</body>
+</html>

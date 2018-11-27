@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<style>
+		.d1{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<script>
+	// jq和原生js写法 可以共存 
+    // window.onload = function(){
+    // 	$('.d1').css('background','pink');
+    // }
+    // d1原生的dom元素
+    var d1 = document.getElementsByClassName('d1')[0];
+    // css()这个方法是jq特有的方法
+    // 原生对象要转换为jq对象
+    $(d1).css('background','pink');
+    $('.d1').click(function(){
+    	// 点击事件里的this指向 原生对象
+    	console.log(this);
+    	console.log($(this));
+    	console.log($('.d1'));
+    	// 可以通过jq对象渠道原生对象
+    	console.log($('.d1')[0]);
+    })
+	</script>
+</body>
+</html>

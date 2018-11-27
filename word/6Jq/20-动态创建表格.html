@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.mask{
+			display: none;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,.5);
+		}
+		.from{
+			width: 240px;
+			height: 200px;
+			background-color: #fff;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	<table class="table" border="1" cellpadding="10" cellspacing="2">
+		<th>序号</th>
+		<th>姓名</th>
+		<th>电话</th>
+		<th>操作</th>
+	</table>
+	<!-- 遮罩层 -->
+	<div class="mask">
+		<form class="from">
+			<tr>
+				<td>用户名</td>
+				<td>
+					<input type="hidden"  class="id">
+					<input type="text" class="userName">
+				</td>
+			</tr>
+			<tr>
+				<td>电话</td>
+				<td><input type="text" class="tel"></td>
+			</tr>
+			<tr>
+				<td><button type="button" class="btn-cancel" onclick="cancel()">取消</button></td>
+				<td><button type="button" class="btn-save" onclick="save()">确定</button></td>
+			</tr>
+		</form>
+	</div>
+	<button class="btnAdd">追加</button>
+	<button class="btnAtt">点击添加</button>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+
+	<script>
+		var users = [
+		    {
+		    	name:'张三',
+		    	tel:'121513'
+		    },
+		    {
+		    	name:'李四',
+		    	tel:'45546'
+		    },
+		    {
+		    	name:'王五',
+		    	tel:'541564165'
+		    }
+		]
+		var users2 = [
+			{
+				name:'赵六',
+				tel: '1234234'
+			},
+			{
+				name:'陈七',
+				tel: '11234234'
+			},
+			{
+				name:'鲁班',
+				tel: '44444'
+			}
+		];
+
+
+		for(var i = 0 ; i < users.length; i++){
+			createTrEle(users[i],$('.table'));
+		}
+
+		// 点击进行添加
+		$('.btnAdd').click(function(){
+			if (users2.length == 0) {
+				alert('没有数据了')
+				return;
+			}
+			// users2的第一组数据
+			var current = users2.shift();
+			createTrEle(current,$('.table'))
+		})
+
+		// 点击删除
+		function del(a){
+			// 通过传进来的参数找到父类
+			$(a).parent().parent().remove();
+		}
+
+		// 点击添加 
+		$('.btnAtt').click(function(){
+			// 让遮罩层显示出来
+			$('.mask').show();
+		})
+		// 点击取消隐藏遮罩层
+		cancel();
+		function cancel(){
+			// 隐藏遮罩层
+			$('.mask').hide();
+			// 并且清空数据
+			$('.from .userName').val('');
+			$('.from .tel').val('')
+		}
+		// 点击添加确定 保存数据
+		function save(){
+			// 获取输入内容
+			var userName = $('.from .userName').val();
+			var Tel = $('.from .tel').val();
+			// 新添的没有id 只有修改的才有
+			var id = $('.from .id').val();
+			var user = {
+				name:userName,
+				tel:Tel
+			}
+			if (id) {
+				user.id = id;
+				// 修改
+				doEdit(user);
+			}else {
+				createTrEle(user,$('.table'))
+			}
+		
+			cancel();
+		}
+
+
+		// 点击修改
+		function edit(obj){
+			// 先打开遮罩层
+			$('.mask').show();
+			// 获取原本内容
+			var id = $(obj).parent().parent().children().eq(0).text();
+			var name = $(obj).parent().parent().children().eq(1).text();
+			var tel = $(obj).parent().parent().children().eq(2).text();
+			console.log(id)
+			// 设值
+			$('.from .id').val(id);
+			$('.from .userName').val(name);
+			$('.from .tel').val(tel);
+		}
+		// 点击确定进行修改
+		function doEdit(obj){
+			// 除了第一行以外所有的tr
+			var trEls = $('.table .tr:gt(0)');
+			trEls.each(function(index,item){
+				if ($(item).children().eq(0).text()==obj.id) {
+					$(item).children().eq(1).text(obj.name);
+					$(item).children().eq(2).text(obj.tel);
+				}
+			})
+		}
+
+
+
+		// 表单生成的封装
+		function createTrEle(obj,$pEl){
+			// 获取旧最后下标
+			var index = $('.table tr:last').children().eq(0).text();
+			// console.log(index)
+			index = /[1-9][0-9]*/.test(index)?index++:0;
+			index++;
+			obj.id = index
+			var str = '<tr><td>'+(obj.id)+'</td><td>'+obj.name+'</td><td>'+obj.tel+'</td><td><button onclick="del(this)">删除</button><button onclick="edit(this)">修改</button></td></tr>'
+			$pEl.append(str);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.danger{
+			color: red;
+		}
+		.em{
+			font-style: italic;
+		}
+		.strong{
+			font-weight: bolder;
+		}
+	</style>
+</head>
+<body>
+	<p class="p1">不凡学院</p>
+	<button class="btn1">危险</button>
+	<button class="btn2">斜体</button>
+	<button class="btn3">加粗</button>
+	<button class="btn4">去除危险</button>
+	<button class="btn5">toggle斜体</button>
+	<script>
+		var btn1 = document.querySelector('.btn1');
+		var btn2 = document.querySelector('.btn2');
+		var btn3 = document.querySelector('.btn3');
+		var btn4 = document.querySelector('.btn4');
+		var btn5 = document.querySelector('.btn5');
+		var p1 = document.querySelector('.p1');
+		// classList
+		// 	add  remove  contains  toggle
+		btn1.onclick = function () {
+			p1.classList.add('danger');
+		}
+		btn4.onclick = function () {
+			p1.classList.remove('danger');
+		}
+		btn5.onclick = function () {
+			p1.classList.toggle('em');
+		}
+		// 是否包含danger样式
+		console.log(p1.classList.contains('danger'));
+
+
+	</script>
+</body>
+</html>

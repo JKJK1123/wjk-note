@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.star{
+			color: orange;
+			margin-left: 10px;
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<span class="star">☆</span>
+		<span class="star">☆</span>
+		<span class="star">☆</span>
+		<span class="star">☆</span>
+		<span class="star">☆</span>
+	</div>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+
+	<script>
+		$('.star').mouseenter(function () {
+			$(this).text('★').prevAll().text('★');
+		})
+		$('.star').on('mouseleave',(function () {
+			$(this).text('☆').nextAll().text('☆');
+		}))
+		$('.box').mouseleave(function () {
+			$('.star').text('☆');
+		})
+
+		$('.star').click(function(){
+			$('.star').off('mouseleave');
+			$('.box').off('mouseleave');
+		})
+	</script>
+</body>
+</html>

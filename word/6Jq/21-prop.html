@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	<inupt type="checkbox" class="like"></inupt>
+	<input type="radio" class="sex">
+	<button class="btn1">获取选中状态</button>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		// $("input[type='checkbox']").prop("checked");
+		//用于遍历 form表单中的多选框和单选框的选中状态
+		$('.btn1').click(function()  {
+			alert($('.like').prop('checked'));
+			alert($('.sex').prop('checked'));
+		})
+	</script>
+	</script>
+</body>
+</html>

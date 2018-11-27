@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	    *{
+	    	margin: 0;
+	    	padding: 0;
+	    }
+	    a{
+	    	text-decoration: none;
+	    }
+		.main{
+			width: 1000px;
+			height: 500px;
+			background-color: yellow;
+			margin: 100px auto;
+		}
+		.aside{
+			float: left;
+			width: 200px;
+			height: 100%;
+			background-color: green;
+		}
+		.nav-item{
+			display: block;
+			width: 100%;
+			height: 40px;
+			margin-bottom: 10px;
+			background-color: blue;
+			text-align: center;
+			font-size: 20px;
+			color: #fff;
+			line-height: 40px;
+		}
+		.iframe-box{
+			position: relative;
+			float: left;
+			width: 800px;
+			height: 500px;
+			background-color: red;
+		}
+		.iframe-item{
+			width: 100%;
+			height: 100%;
+		}
+		.aside a:hover{
+			color: red;
+		}
+		.nav-item.active{
+			color: red;
+		}
+		.box{
+			position: absolute;
+			top: 0;
+			left: 0;
+			/*width: 100%;*/
+			height: 30px;
+		}
+		.sp{
+			position: relative;
+			float: left;
+			width: 70px;
+			height: 30px;
+			background-color: yellow;
+			margin-right: 5px;
+		}
+		.nav{
+			position: absolute;
+			top: 0;
+			right: 0;
+			display: block;
+			font-size: 12px;
+			
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="aside">
+			<a href="javascript:;" class="nav-item" data-iframe-id="baidu" data-url="http://www.baidu.com">百度</a>
+			<a href="javascript:;" class="nav-item" data-iframe-id="taobao" data-url="http://www.taobao.com">淘宝</a>
+			<a href="javascript:;" class="nav-item" data-iframe-id="bufanui" data-url="http://www.bufanui.com">不凡</a>
+		</div>
+		<div class="iframe-box">
+			<div class="box">
+				
+			</div>
+
+
+			<!-- <iframe src="" frameborder="0" class="iframe-item"></iframe> -->
+		</div>
+	</div>
+
+
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		$('.nav-item').click(function(){
+			// 移除原本的active
+			$('.nav-item.active').removeClass('active');
+			$(this).addClass('active');
+			// 创建之前 判断之前有没有iframe_xx的id存在
+			var tempId = '#iframe_'+$(this).data('iframe-id');//iframe_baidu  ifrae_taobao  iframe_bufan
+			// jq对于查找的到的元素会有length!=0 的属性
+			if($(tempId).length!=0){
+				$('.iframe-item').hide();
+				$(tempId).show();
+			}else {
+				// $('.iframe-item').attr('src',$(this).data('url'))
+			   var str = '<iframe class="iframe-item" id="iframe_'+$(this).data('iframe-id')+'" src="'+$(this).data('url')+'" border="0" frameborder="0"></iframe>';
+			   var rs = '<span class="sp" id="'+$(this).data('iframe-id')+'" ><a href="javascript" class="nav">x</a></span>';
+				$('.iframe-item').hide();
+				//追加
+				$('.iframe-box').append($(str));
+				$('.box').append($(rs));
+
+
+				// 点击进行跳转
+				// $('.sp').click(function(){
+				// 	var temp1 = $(this).attr('id');
+				// 	var temp2 = $('.iframe-item').attr('id');
+				// 	var temp = temp2.split('iframe_');
+				// 	if (temp == temp1) {
+				// 		$(temp2).show();
+				// 		$('.iframe-item').hide();
+				// 	}
+				// })
+
+			}
+		})
+
+	</script>
+</body>
+</html>

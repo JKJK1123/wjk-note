@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+    <input type="text" class="username"> <button class="btn1">获取用户名</button> <button class="btn2">设置为呵呵呵</button>
+    <div class="d1">
+    	天气不错!
+    </div>
+    <ul class="ul">
+    	<li>li_1</li>
+    	<li>li_2</li>
+    	<li>li_3</li>
+    	<li>li_4</li>
+    </ul>
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script>
+    	// 表单的值是value
+    	$('.btn1').click(function(){
+    		alert($('.username').val());
+    	})
+    	$('.btn2').click(function(){
+    		$('.username').val('呵呵呵');
+    	})
+    	// 获取标签内容
+    	$('.d1').click(function(){
+    		alert($(this).text());
+    	})
+    	// 获取标签
+    	$('.ul').click(function(){
+    		alert($(this).html());
+    	})
+    </script>
+</body>
+</html>

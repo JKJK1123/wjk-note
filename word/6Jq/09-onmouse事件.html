@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<style>
+		.box{
+			width: 400px;
+			height: 400px;
+			background-color: pink;
+		}
+		.box .innerBox{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		
+	</div>
+
+	<script>
+		// 一般模拟hover使用onmouseenter/onmouseleave
+		// $('.box').mouseenter(function () {
+		// 	console.log('进入到.box里了...');
+		// })
+		// $('.box').mouseleave(function () {
+		// 	console.log('离开了box...');
+		// })
+		// 一般不用,只要box内部有元素,穿过一次就触发一次
+		$('.box').mouseover(function () {
+			console.log('进入到.box里了...');
+		})
+		$('.box').mouseout(function () {
+			console.log('离开了box...');
+		})
+
+	</script>
+</body>
+</html>

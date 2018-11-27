@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			display: none;
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1"></div>
+	<button class="btn1">点击显示</button>
+	<button class="btn2">隐藏</button>
+	<button class="btn3">slideDown</button>
+	<button class="btn4">slideUp</button>
+	<button class="btn5">slideToggle</button>
+	<button class="btn6">fadeout</button>
+	<button class="btn7">fadeTo</button>
+
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		// show 让匹配的元素展示出来
+		$('.btn1').click(function(){
+			$('.d1').show(1000,function(){
+				$('.d1').css('background-color','red');
+			});
+		})
+		// hide隐藏
+		$('.btn2').click(function(){
+			$('.d1').hide(1000);
+		})
+		// slideDown下拉
+		$('.btn3').click(function(){
+			$('.d1').slideDown('slow');
+		})
+		// slideUP上去
+		$('.btn4').click(function(){
+			$('.d1').slideUp('slow');
+		})
+		// 划入划出两种状态切换
+		$('.btn5').click(function () {
+			$('.d1').slideToggle(1000);
+		})
+		// fadeOut淡出动画
+		$('.btn6').click(function(){
+			$('.d1').fadeOut('fast');
+		})
+		// fadeTo透明度发生变化
+		$('.btn7').click(function(){
+			$('.d1').fadeTo('slow',.3);
+		})
+	</script>
+</body>
+</html>

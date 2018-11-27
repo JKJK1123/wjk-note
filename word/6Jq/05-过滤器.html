@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<ul>
+		<li>li_1</li>
+		<li>li_2</li>
+		<li>li_3</li>
+		<li>li_4</li>
+		<li>li_5</li>
+		<li>li_6</li>
+		<li>li_7</li>
+		<li>li_8</li>
+		<li>li_9</li>
+		<li>li_10</li>
+	</ul>
+	<script>
+		// 标签获取
+		var lis = $('li');
+		$('li:eq(0)').css('color','red');
+		$('li:eq(5)').css('color','red');
+		// 选择序号大于/小于
+		$('li:gt(7)').css('color','blue')
+		$('li:lt(2)').css('color','yellow');
+		// 奇数偶数
+		$('li:odd').css('backgroundColor','yellow');
+		$('li:even').css('background','pink');
+		// 第一个跟最后一个
+		$('li:first').css('fontSize','30px');
+		$('li:last').css('fontSize','30px');
+	</script>
+</body>
+</html>

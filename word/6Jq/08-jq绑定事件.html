@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<style>
+		.d1{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<script>
+		$('.d1').click(function(){
+			// alert('fff');
+			// 注意:如果事件是$('.d1').click = fn 那么this指的是$('.d1')
+			// 单这里在回调函数里,this一般会发生变化
+			// 在jq时间里,this指向绑定该事件的dom元素本身
+			// console.log(this);
+			$(this).css('background-color','red');
+		})
+	</script>
+</body>
+</html>

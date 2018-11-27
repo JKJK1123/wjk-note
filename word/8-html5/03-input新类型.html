@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.progress{
+			width: 400px;
+			height: 20px;
+			border: 1px solid red;
+		}
+		.progress .line{
+			width: 30%;
+			height: 100%;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	  <!-- email、url、number、range、color -->
+	  <form action="/abc">
+	  	邮箱: <input type="email"><br>
+	  	网站: <input type="url"><br>
+	  	年龄: <input type="number"><br>
+	  	分数: <input type="range"><br>
+	  	颜色: <input type="color"><br>
+	  	出生日期: <input type="date"> <input type="month"><br>
+	  	性别: <input type="text" list="data">
+	  	      <datalist id="data">
+	  	      	<option >男</option>
+	  	      	 <option>女</option>
+				 <option>不详</option> 
+	  	      </datalist>
+	  	<input type="submit">
+	  	<meter  value="80"    min="0" max="100"  low="60"  high="80" ></meter><br>
+		<progress value="22" max="100"></progress><br>
+		<div class="progress">
+			<div class="line"></div>
+		</div>
+	  </form>
+
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		setInterval(function () {
+			var leader = $('.line').width();
+			if(leader == $('.progress').width()){
+				leader = 0;
+			}
+			$('.line').width(leader+2);
+		},17)
+
+	</script>
+</body>
+</html>
